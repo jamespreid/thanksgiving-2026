@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thanksgiving 2026 · Shearer family</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316302B'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia' font-size='30' fill='%23F5F0E6'%3ET%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F0E6; --bg2:#EDE6D8; --paper:#FFFDF8; --ink:#1C1A17; --ink2:#4C463F; --mute:#7C746A; --line:#DDD5C6;
+    --green:#16302B; --green2:#24473F; --copper:#B8652F; --copper2:#F1E2D6; --mist:#D8E2DC; --sand:#E9DCC4; --sea:#2F6B8A;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,.serif{font-family:Fraunces,Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:1.1;margin:0}
+  a{color:var(--copper)}
+  p{margin:0 0 1em}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .num{font-family:Fraunces,serif;color:var(--copper);font-size:14px;letter-spacing:.08em}
+  .kicker{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  section{padding:72px 0}
+  section h2{font-size:clamp(34px,4.8vw,56px);margin:8px 0 18px}
+  .lede{font-size:clamp(17px,1.9vw,20px);color:var(--ink2);max-width:720px;margin-bottom:34px}
+  .grid{display:grid;gap:18px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .box{background:var(--paper);border:1px solid var(--line);padding:22px 24px}
+  .box h3{font-size:24px;margin-bottom:8px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:1px solid var(--ink);background:var(--ink);color:#fff;text-decoration:none;font-weight:500;font-size:15px;cursor:pointer;font-family:inherit}
+  .btn.ghost{background:transparent;color:var(--ink)}
+  .btn.light{background:#fff;color:var(--ink);border-color:#fff}
+  .btn.outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+  input[type=text],input[type=password]{font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);background:#fff;color:var(--ink);outline:none;width:100%}
+  input:focus{border-color:var(--copper)}
+  .tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;background:var(--mist);color:var(--green)}
+  .tag.copper{background:var(--copper2);color:#7A3D14}.tag.sea{background:#D9E7EF;color:#1D4A63}.tag.sand{background:var(--sand);color:#6B4F1C}
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:rgba(245,240,230,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;height:60px;gap:20px}
+  .brand{font-family:Fraunces,serif;font-size:18px;color:var(--ink);text-decoration:none;white-space:nowrap}
+  .brand small{font-family:Inter;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-left:10px}
+  .links{margin-left:auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+  .links::-webkit-scrollbar{display:none}
+  .links a{font-size:14px;color:var(--ink2);text-decoration:none;padding:8px 12px;white-space:nowrap;border-bottom:2px solid transparent}
+  .links a.on{color:var(--ink);border-color:var(--copper)}
+  /* hero */
+  .hero{position:relative;height:min(92vh,820px);min-height:560px;display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:var(--green)}
+  .hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,48,43,.15) 0%,rgba(22,48,43,.25) 40%,rgba(22,48,43,.88) 100%)}
+  .hero .wrap{position:relative;padding-bottom:64px;width:100%}
+  .hero h1{font-size:clamp(48px,8.5vw,118px);font-weight:300;line-height:.98;max-width:12ch}
+  .hero h1 em{font-style:italic;font-weight:300}
+  .hero .sub{font-size:clamp(16px,1.8vw,19px);max-width:600px;color:rgba(255,255,255,.85);margin:22px 0 28px}
+  .hero .meta{display:flex;gap:28px;flex-wrap:wrap;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:26px}
+  .hero .meta b{color:#fff;font-weight:600}
+  /* ticker strip */
+  .strip{background:var(--green);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+  .strip div{padding:20px 18px 20px 0;border-right:1px solid rgba(255,255,255,.12);margin-right:18px}
+  .strip div:last-child{border:0}
+  .strip .v{font-family:Fraunces,serif;font-size:30px;line-height:1}
+  .strip .l{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:6px}
+  @media(max-width:800px){.strip .wrap{grid-template-columns:1fr 1fr 1fr}.strip div:nth-child(n+4){border-top:1px solid rgba(255,255,255,.12)}}
+  @media(max-width:500px){.strip .wrap{grid-template-columns:1fr 1fr}}
+  /* video break */
+  .vbreak{position:relative;height:clamp(260px,42vh,460px);overflow:hidden;background:var(--green);color:#fff;display:flex;align-items:center}
+  .vbreak video,.vbreak img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vbreak .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,48,43,.75),rgba(22,48,43,.15))}
+  .vbreak .wrap{position:relative}
+  .vbreak .num{color:rgba(255,255,255,.7)}
+  .vbreak h2{font-size:clamp(36px,5.5vw,72px);font-weight:300;margin:6px 0 0}
+  .vbreak p{color:rgba(255,255,255,.8);max-width:520px;margin:12px 0 0}
+  /* option cards */
+  .opt{background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column}
+  .opt .top{padding:22px 24px 0}
+  .opt .body{padding:14px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
+  .opt h3{font-size:28px}
+  .opt .sub{color:var(--mute);font-size:14px;margin-top:4px}
+  .kv{display:grid;grid-template-columns:92px 1fr;gap:6px 12px;font-size:14.5px;border-top:1px solid var(--line);padding-top:12px}
+  .kv b{font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:3px}
+  .opt ul{margin:0;padding-left:18px;font-size:14.5px}
+  /* house cards */
+  .house{background:var(--paper);border:1px solid var(--line);padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:6px 16px}
+  .house .t{font-family:Fraunces,serif;font-size:20px;line-height:1.2}
+  .house .t a{color:inherit;text-decoration:none}
+  .house .price{font-family:Fraunces,serif;font-size:22px;text-align:right;white-space:nowrap}
+  .house .price small{display:block;font-family:Inter;font-size:12px;color:var(--mute)}
+  .house .meta{grid-column:1/-1;font-size:13.5px;color:var(--mute)}
+  .house .d{grid-column:1/-1;font-size:14.5px}
+  .house .act{grid-column:1/-1;display:flex;gap:14px;font-size:14px;margin-top:4px}
+  /* itinerary toggle */
+  .seg{display:inline-flex;border:1px solid var(--ink);margin-bottom:26px}
+  .seg button{font:inherit;font-size:14.5px;font-weight:500;padding:11px 20px;background:transparent;border:0;cursor:pointer;color:var(--ink);border-right:1px solid var(--ink)}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--ink);color:#fff}
+  .itin-note{font-size:14.5px;color:var(--ink2);background:var(--paper);border-left:3px solid var(--copper);padding:12px 16px;margin-bottom:22px}
+  .day{border-top:1px solid var(--ink);padding:22px 0 26px;display:grid;grid-template-columns:200px 1fr;gap:12px 32px}
+  @media(max-width:700px){.day{grid-template-columns:1fr}}
+  .day .dh .kicker{color:var(--copper)}
+  .day .dh h3{font-size:26px;margin-top:4px}
+  .row{display:grid;grid-template-columns:100px 1fr;gap:4px 14px;padding:8px 0;border-top:1px dashed var(--line);font-size:15px}
+  .row:first-child{border-top:0;padding-top:0}
+  .row b{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:600;padding-top:4px}
+  @media(max-width:520px){.row{grid-template-columns:1fr}}
+  /* vote */
+  .names{display:flex;flex-wrap:wrap;gap:6px}
+  .names button{font:inherit;font-size:14px;padding:8px 14px;border:1px solid var(--line);background:#fff;cursor:pointer}
+  .names button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .q{background:var(--paper);border:1px solid var(--line);padding:24px;margin-bottom:18px}
+  .q h3{font-size:24px;margin-bottom:4px}
+  .q .help{font-size:14.5px;color:var(--mute);margin-bottom:14px}
+  .q .grp{font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:14px 0 4px;font-weight:600}
+  .vo{position:relative;display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);padding:12px 14px;margin:6px 0;cursor:pointer;background:#fff;overflow:hidden}
+  .vo .bar{position:absolute;left:0;top:0;bottom:0;background:var(--copper2);transition:width .4s}
+  .vo>*{position:relative}
+  .vo .bx{width:20px;height:20px;border:1.5px solid #B9B0A2;flex:none;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;background:#fff}
+  .vo.one .bx{border-radius:50%}
+  .vo.me{border-color:var(--copper)}.vo.me .bx{background:var(--copper);border-color:var(--copper)}
+  .vo .lab{font-weight:500}.vo .mt{font-size:13.5px;color:var(--mute)}.vo .who{font-size:12.5px;color:var(--mute);margin-top:3px}
+  .vo .cnt{margin-left:auto;font-family:Fraunces,serif;font-size:20px;min-width:24px;text-align:right}
+  .sync{font-size:13px;color:var(--mute);margin-top:10px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);opacity:0;background:var(--ink);color:#fff;padding:10px 16px;font-size:14px;transition:all .25s;z-index:100;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%)}
+  /* checklists & dishes */
+  .chk{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px dashed var(--line);cursor:pointer}
+  .chk .bx{width:20px;height:20px;border:1.5px solid #B9B0A2;flex:none;margin-top:2px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;background:#fff}
+  .chk.done .bx{background:var(--green);border-color:var(--green)}.chk.done .t{text-decoration:line-through;color:var(--mute)}
+  .chk .due{margin-left:auto;font-size:12.5px;white-space:nowrap;color:var(--mute)}
+  .due.late{color:var(--copper);font-weight:600}.due.soon{color:#8A6A00;font-weight:600}
+  .dish{display:flex;gap:10px;align-items:center;padding:8px 0;border-top:1px dashed var(--line);font-size:15px}
+  .dish .by{margin-left:auto;font-size:12.5px;color:var(--mute)}
+  .dish .x{border:0;background:none;color:var(--mute);cursor:pointer}
+  .pill{display:inline-block;font-size:13px;padding:4px 10px;border:1px solid var(--line);background:#fff;margin:3px 4px 3px 0}
+  /* things */
+  .thing{background:var(--paper);border:1px solid var(--line);padding:18px 20px}
+  .thing h4{font-size:19px;margin:8px 0 2px}
+  .thing h4 a{color:inherit;text-decoration:none}
+  .thing .m{font-size:13px;color:var(--mute);margin-bottom:6px}
+  .thing p{font-size:14.5px;margin:0}
+  /* gate */
+  #gate{position:fixed;inset:0;background:var(--green);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;color:#fff}
+  #gate .in{max-width:400px;width:100%}
+  #gate h2{font-size:40px;font-weight:300;margin:6px 0 10px}
+  #gate p{color:rgba(255,255,255,.75)}
+  #gate input{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3);color:#fff;text-align:center}
+  .err{color:#F3B08C;font-size:14px;margin:8px 0 0;display:none}
+  footer{padding:40px 0 60px;color:var(--mute);font-size:13.5px;border-top:1px solid var(--line)}
+  .note{background:var(--paper);border-left:3px solid var(--green);padding:14px 18px;font-size:15px}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="in">
+    <div class="kicker" style="color:rgba(255,255,255,.6)">Shearer family · Thanksgiving 2026</div>
+    <h2>Password</h2>
+    <p>Hint: the last password, Charlotte edition. No caps, no spaces.</p>
+    <input type="password" id="pw" placeholder="password" autocomplete="off">
+    <div class="err" id="pwErr">That’s not it. Try again.</div>
+    <button class="btn light" id="pwGo" style="margin-top:14px;width:100%;justify-content:center">Continue</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<div class="nav" id="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Thanksgiving ’26 <small>Charlotte · Nov 24–28</small></a>
+    <div class="links" id="links">
+      <a href="#plan">Plan</a><a href="#stay">Where we stay</a><a href="#itinerary">Itinerary</a><a href="#vote">Vote</a><a href="#dinner">Dinner</a><a href="#todo">To-dos</a><a href="#more">More</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <video autoplay muted loop playsinline preload="auto" poster="https://images.pexels.com/videos/33464075/4k-drone-33464075.jpeg?auto=compress&cs=tinysrgb&w=1600" id="heroVid">
+    <source src="media/hero-charlotte.mp4" type="video/mp4">
+    <source src="hero-charlotte.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/33464075/14238297_1920_1080_30fps.mp4" type="video/mp4">
+  </video>
+  <div class="shade"></div>
+  <div class="wrap">
+    <div class="meta"><span><b>Tue Nov 24 – Sat Nov 28</b></span><span><b id="heroDays">—</b> days away</span><span><b>10</b> of us</span><span><b>Vote closes Nov 4</b></span></div>
+    <h1>Thanksgiving in <em>Charlotte</em></h1>
+    <p class="sub">This year everyone drives to Charlotte. The family votes on whether to stay put for the week or add a few nights at a mountain or beach house.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn light" href="#vote">Vote now</a><a class="btn outline" href="#stay">See the house options</a></div>
+  </div>
+</header>
+<div class="strip"><div class="wrap">
+  <div><div class="v" id="daysToGo">—</div><div class="l">Days to go</div></div>
+  <div><div class="v">4</div><div class="l">Nights</div></div>
+  <div><div class="v">10</div><div class="l">People · 8 + 2 kids</div></div>
+  <div><div class="v">6 hr</div><div class="l">Drive from NoVA</div></div>
+  <div><div class="v">60°</div><div class="l">Typical high</div></div>
+</div></div>
+
+<!-- ───────── PLAN ───────── -->
+<section id="plan">
+  <div class="wrap">
+    <div class="num">01</div>
+    <h2>The plan</h2>
+    <p class="lede">Everyone is in Charlotte by Tuesday or Wednesday. Thanksgiving dinner is Thursday. The open question is whether the whole week is in Charlotte or whether we rent a house in the mountains or at the beach for some or all of it. That is on the ballot, which closes Wednesday, November 4, so there is time to book.</p>
+    <div class="grid g2">
+      <div class="box">
+        <div class="kicker">The idea</div>
+        <p style="margin-top:8px">Thanksgiving in Charlotte, within driving distance for everyone. Cindy and Randy and Ryan and Kristi already live there, the Virginia households are six hours up I-85, and the mountains and the coast are each a few hours away if we want a change of scene for part of the week. The Grenada bookings are cancelled or being cancelled; the loose ends are on the to-do list.</p>
+      </div>
+      <div class="box">
+        <div class="kicker">Who’s coming</div>
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;font-size:14.5px">
+          <div><strong>Cindy &amp; Randy</strong><br><span style="color:var(--mute)">Charlotte · hosting</span></div>
+          <div><strong>Ryan &amp; Kristi</strong><br><span style="color:var(--mute)">Charlotte · at their place</span></div>
+          <div><strong>Danielle &amp; Edgar</strong><br><span style="color:var(--mute)">Driving from Manassas, VA</span></div>
+          <div><strong>Julia, James, Emma &amp; David</strong><br><span style="color:var(--mute)">Driving from Vienna, VA</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:18px">
+      <div class="box">
+        <div class="kicker">The drive from Northern Virginia (Vienna and Manassas)</div>
+        <div class="kv" style="margin-top:12px;border:0;padding:0">
+          <b>Distance</b><span>About 395 miles from Vienna, 375 from Manassas</span>
+          <b>Time</b><span>6 to 6½ hours without stops; allow 7½ with the kids</span>
+          <b>Route</b><span>I-95 south to I-85 (Richmond, Durham, Greensboro) is usually fastest. I-66 to I-81 to I-77 (Roanoke, Statesville) is about 15 minutes longer and skips I-95; use it if 95 is red. <a href="https://www.google.com/maps/dir/Vienna,+VA/Charlotte,+NC" target="_blank" rel="noopener">Live route</a></span>
+          <b>Tuesday</b><span>The Tuesday before Thanksgiving is one of the heaviest driving days of the year and the afternoon is the worst of it. Leave before 7 AM or after 7 PM.</span>
+          <b>Saturday</b><span>Leave Charlotte by 9 AM to clear Richmond before mid-afternoon. Sunday is worse than Saturday.</span>
+        </div>
+      </div>
+      <div class="box">
+        <div class="kicker">Stops</div>
+        <ul style="margin:10px 0 0;padding-left:18px;font-size:14.5px">
+          <li><strong>I-95/I-85:</strong> rest area near Petersburg at 2 hours; South Hill, VA (exit 12) at 3 hours for gas and food; Durham at 4 hours if you want a real stop, the <a href="https://www.lifeandscience.org/" target="_blank" rel="noopener">Museum of Life &amp; Science</a> is right off the highway.</li>
+          <li><strong>I-81/I-77:</strong> Roanoke at 2¾ hours; Mt. Airy or Statesville for lunch.</li>
+        </ul>
+        <div class="kicker" style="margin-top:18px">Bring</div>
+        <p style="font-size:14.5px;margin:8px 0 0">Car seats, the pack-and-play, stroller, sound machines. None of that will be at a rental.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── VIDEO BREAK: mountains ───────── -->
+<div class="vbreak">
+  <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/4165966/4k-beauty-mountains-nature-4165966.jpeg?auto=compress&cs=tinysrgb&w=1600">
+    <source src="media/break-mountains.mp4" type="video/mp4">
+    <source src="break-mountains.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/4165966/4165966-hd_1280_720_60fps.mp4" type="video/mp4">
+  </video>
+  <div class="shade"></div>
+  <div class="wrap"><div class="num">02</div><h2>Where we stay</h2><p>Three ways to run the week. Every version starts and ends in Charlotte.</p></div>
+</div>
+
+<!-- ───────── STAY ───────── -->
+<section id="stay">
+  <div class="wrap">
+    <div class="grid g3">
+      <div class="opt">
+        <div class="top"><span class="tag">Option 1</span><h3 style="margin-top:10px">Charlotte all week</h3><div class="sub">Cindy &amp; Randy’s house on Nolen Lane is home base. Ryan and Kristi stay at their own place.</div></div>
+        <div class="body">
+          <div class="kv"><b>Cost</b><span>Groceries and a night or two out</span><b>Driving</b><span>None once we arrive</span><b>Good for</b><span>The kids’ routine, a real kitchen, no packing twice</span></div>
+          <ul><li>Wednesday-night parade uptown, Turkey Trot Thursday, Speedway Christmas any night</li><li>Everyone has a bed, a yard and a familiar kitchen</li><li>Nothing to book</li></ul>
+        </div>
+      </div>
+      <div class="opt">
+        <div class="top"><span class="tag copper">Option 2</span><h3 style="margin-top:10px">A mountain house</h3><div class="sub">Asheville, Hendersonville, Lake Lure or the High Country. 1½ to 2½ hours from Charlotte.</div></div>
+        <div class="body">
+          <div class="kv"><b>Cost</b><span>$1,600–3,900 for four nights on the shortlist, split four ways</span><b>Driving</b><span>1½–2½ hours each way</span><b>Good for</b><span>Fireplace and hot tub weather, everyone under one roof</span></div>
+          <ul><li>Biltmore and Tweetsie are already decorated for Christmas</li><li>Highs in the 50s, lows in the 30s; a chance of snow at Beech Mountain</li><li>Cell service is thin at a lot of these</li></ul>
+        </div>
+      </div>
+      <div class="opt">
+        <div class="top"><span class="tag sea">Option 3</span><h3 style="margin-top:10px">A beach house</h3><div class="sub">Ocean Isle, Carolina Beach, Pawleys or the Charleston islands. 3½ to 4 hours from Charlotte.</div></div>
+        <div class="body">
+          <div class="kv"><b>Cost</b><span>$2,400–5,600 for four nights on the shortlist, split four ways</span><b>Driving</b><span>3½–4 hours each way</span><b>Good for</b><span>Mid-60s and sunny, empty beaches, off-season prices</span></div>
+          <ul><li>Brookgreen Gardens’ Nights of a Thousand Candles starts Friday; Enchanted Airlie in Wilmington too</li><li>Water is 60° so the pools are for looking at</li><li>Longest drive, and most beach towns are quiet in November</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="note" style="margin:26px 0 34px"><strong>A split week is also on the ballot:</strong> Thanksgiving dinner in Charlotte on Thursday, then Friday and Saturday nights at a house. It is the shortest booking and the most driving.</div>
+
+    <div class="kicker" id="mtnList" style="margin-bottom:4px">Mountain shortlist</div>
+    <p style="font-size:14.5px;color:var(--mute);margin-bottom:14px">Pulled from Airbnb on Oct 29 for Nov 24–28, 8 adults and 2 kids, so every one of these is available on our dates and sleeps 10. Totals include Airbnb’s fees. The full list of 75 is in <a href="https://docs.google.com/spreadsheets/d/1T4Ifz5WJcnUI3UqJMsfFqeEtp-3msQ0m4lG4rC_eIyc/edit?usp=sharing" target="_blank" rel="noopener">the spreadsheet</a>.</p>
+    <div class="grid g2" id="mtnHouses"></div>
+
+    <div class="kicker" id="bchList" style="margin:36px 0 4px">Beach shortlist</div>
+    <p style="font-size:14.5px;color:var(--mute);margin-bottom:14px">Same search. Prices are generally lower than the mountains because the coast is off-season.</p>
+    <div class="grid g2" id="bchHouses"></div>
+  </div>
+</section>
+
+<!-- ───────── VIDEO BREAK: beach ───────── -->
+<div class="vbreak">
+  <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/5287794/beach-drone-drone-footage-hurricane-isaias-5287794.jpeg?auto=compress&cs=tinysrgb&w=1600">
+    <source src="media/break-beach.mp4" type="video/mp4">
+    <source src="break-beach.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/5287794/5287794-hd_1920_1080_24fps.mp4" type="video/mp4">
+  </video>
+  <div class="shade"></div>
+  <div class="wrap"><div class="num">03</div><h2>The week</h2><p>Three itineraries, one for each way the vote could go. Tuesday and Saturday are the same in all of them.</p></div>
+</div>
+
+<!-- ───────── ITINERARY ───────── -->
+<section id="itinerary">
+  <div class="wrap">
+    <div class="seg" id="seg"><button data-k="clt" class="on">If we stay in Charlotte</button><button data-k="mtn">If we go to the mountains</button><button data-k="bch">If we go to the beach</button></div>
+    <div class="itin-note" id="itinNote"></div>
+    <div id="days"></div>
+  </div>
+</section>
+
+<!-- ───────── VOTE ───────── -->
+<section id="vote" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="num">04</div>
+    <h2>The ballot</h2>
+    <p class="lede">Pick your name, then tap your answers. Votes save to a shared tally that everyone can see, and you can change yours until the ballot closes on Wednesday, November 4. Emma and David vote by proxy.</p>
+    <div class="box" style="margin-bottom:18px">
+      <div class="kicker" style="margin-bottom:10px">Voting as</div>
+      <div class="names" id="names"></div>
+      <div class="sync" id="sync"></div>
+    </div>
+    <div id="questions"></div>
+  </div>
+</section>
+
+<!-- ───────── VIDEO BREAK: dinner ───────── -->
+<div class="vbreak">
+  <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/5848366/autumn-autumn-aesthetic-autumn-atmosphere-autumn-decoration-5848366.jpeg?auto=compress&cs=tinysrgb&w=1600">
+    <source src="media/break-dinner.mp4" type="video/mp4">
+    <source src="break-dinner.mp4" type="video/mp4">
+    <source src="https://videos.pexels.com/video-files/5848366/5848366-hd_1920_1080_24fps.mp4" type="video/mp4">
+  </video>
+  <div class="shade"></div>
+  <div class="wrap"><div class="num">05</div><h2>Dinner</h2><p>Cook, order ahead, or go out. The ballot decides; the details are here.</p></div>
+</div>
+
+<!-- ───────── DINNER ───────── -->
+<section id="dinner">
+  <div class="wrap">
+    <div class="grid g3" id="dinnerOpts"></div>
+    <div class="grid g2" style="margin-top:34px">
+      <div class="box">
+        <div class="kicker">If we cook: sign up for a dish</div>
+        <p style="font-size:14.5px;color:var(--mute);margin:8px 0 12px">Cindy has the turkey. Add what you’ll bring and it shows up for everyone. Cold dishes travel fine from Virginia; anything that needs the oven on the day should come from a Charlotte kitchen.</p>
+        <div style="display:flex;gap:8px"><input type="text" id="dishIn" placeholder="e.g. Sweet potato casserole" maxlength="60"><button class="btn" id="dishAdd">Add</button></div>
+        <div style="font-size:13px;color:var(--mute);margin-top:8px" id="dishHint"></div>
+        <div id="dishMine" style="margin-top:12px"></div>
+      </div>
+      <div class="box">
+        <div class="kicker">The table so far</div>
+        <div id="dishAll" style="margin-top:6px"></div>
+        <div class="kicker" style="margin-top:18px">Still needed</div>
+        <div style="margin-top:6px" id="dishNeed"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── TO-DOS ───────── -->
+<section id="todo" style="padding-top:0">
+  <div class="wrap">
+    <div class="num">06</div>
+    <h2>To-dos and deadlines</h2>
+    <p class="lede">Check things off as they get done. Ticks save on your own device; day counts update themselves.</p>
+    <div class="box" id="todoList"></div>
+  </div>
+</section>
+
+<!-- ───────── MORE ───────── -->
+<section id="more" style="background:var(--bg2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="num">07</div>
+    <h2>Around Charlotte</h2>
+    <p class="lede">What is on that week, what is closed, and what the kids will like. Most of it is within 30 minutes of Nolen Lane.</p>
+    <div class="grid g3" id="things"></div>
+
+    <div class="grid g2" style="margin-top:40px">
+      <div class="box"><div class="kicker">Football, Thursday Nov 26</div><div id="nfl" style="margin-top:8px"></div></div>
+      <div class="box"><div class="kicker">Charlotte teams and rivalry Saturday</div><div id="local" style="margin-top:8px"></div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:18px">
+      <div><div class="grid" id="tips"></div></div>
+      <div class="box"><div class="kicker">Packing list</div><div id="pack" style="margin-top:4px"></div></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:18px">
+      <div class="box"><h3 style="font-size:20px">Winston</h3><p style="font-size:14.5px;margin:8px 0 0">Boarding at Pender Pet Retreat. Confirm the dates once we know whether the Reids leave Tuesday or Wednesday.</p></div>
+      <div class="box"><h3 style="font-size:20px">The Garcia animals</h3><p style="font-size:14.5px;margin:8px 0 0">In-home sitter, twice a day, same as the Grenada plan. Sitter’s number is in the group chat.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Thanksgiving 2026 · a family planning page. House prices and event dates were checked Oct 29 and can change; the links are the source of truth. Questions to Cindy, site fixes to James.</div></footer>
+
+<script>
+/* ───────────── settings ───────────── */
+const TRIP_START = new Date(2026, 10, 24);
+const TRAVELERS = ['Cindy','Randy','Danielle','Edgar','Ryan','Kristi','Julia','James','Emma','David'];
+const POLL_KEY = 'scv-tg2026-charlotte-q7m2w9';
+const VOTING_OPEN = true;
+const PASSWORDS = ['gobblelotte'];
+const HOUSES = window.HOUSES = { mtn:[], bch:[] };
+const ITIN = window.ITIN = {};
+const QUESTIONS = window.QUESTIONS = {};
+const DINNER = window.DINNER = [];
+const THINGS = window.THINGS = [];
+const NFL = window.NFL = [];
+const LOCAL = window.LOCAL = [];
+const TIPS = window.TIPS = [];
+const TODOS = window.TODOS = [];
+const PACK = window.PACK = [];
+const DISH_NEEDS = window.DISH_NEEDS = [];
+
+/* ───────────── helpers ───────────── */
+const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ls={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v);}catch(e){return d;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+let toastT; function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2200);}
+function daysLeft(d){const n=new Date();n.setHours(0,0,0,0);return Math.round((d-n)/864e5);}
+const M=q=>` <a href="https://www.google.com/maps/search/${encodeURIComponent(q)}" target="_blank" rel="noopener" title="Map" style="text-decoration:none;font-size:13px">map ↗</a>`;
+
+/* ───────────── gate ───────────── */
+(function(){let ok=false;try{ok=PASSWORDS.includes(sessionStorage.getItem('scv-unlock-v4'));}catch(e){}
+ if(ok){$('#gate').remove();return;}
+ const go=()=>{const v=$('#pw').value.trim().toLowerCase();if(PASSWORDS.includes(v)){try{sessionStorage.setItem('scv-unlock-v4',v);}catch(e){}$('#gate').remove();}else{$('#pwErr').style.display='block';$('#pw').select();}};
+ $('#pwGo').onclick=go;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')go();});setTimeout(()=>$('#pw').focus(),50);})();
+(function(){const n=daysLeft(TRIP_START);$('#daysToGo').textContent=n;$('#heroDays').textContent=n;})();
+$$('video').forEach(v=>{v.muted=true;const go=()=>v.play().catch(()=>{});go();v.addEventListener('loadeddata',go);document.addEventListener('click',go,{once:true});});
+
+/* ───────────── nav ───────────── */
+function spy(){const y=window.scrollY+90;let cur='';$$('section[id]').forEach(s=>{if(s.offsetTop<=y)cur=s.id;});$$('#links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));}
+window.addEventListener('scroll',spy,{passive:true});
+
+/* ───────────── houses ───────────── */
+function houseCard(h){return `<div class="house">
+  <div><span class="tag ${h.kind==='mtn'?'copper':'sea'}">${esc(h.code)}</span><div class="t" style="margin-top:6px"><a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.name)}</a></div></div>
+  <div class="price">$${h.total.toLocaleString()}<small>4 nights · $${Math.round(h.total/4).toLocaleString()} per household</small></div>
+  <div class="meta">${esc(h.area)} · ${h.drive} from Charlotte · ${h.br} BR / ${h.ba} BA · ${h.rating?esc(h.rating):'new listing'}${h.fc?' · free cancellation':''}</div>
+  <div class="d">${h.desc}</div>
+  <div class="act"><a href="${esc(h.url)}" target="_blank" rel="noopener">Airbnb listing ↗</a><a href="https://www.google.com/maps/search/${encodeURIComponent(h.area)}" target="_blank" rel="noopener">Map ↗</a></div>
+</div>`;}
+function renderHouses(){$('#mtnHouses').innerHTML=HOUSES.mtn.map(houseCard).join('');$('#bchHouses').innerHTML=HOUSES.bch.map(houseCard).join('');}
+
+/* ───────────── itinerary ───────────── */
+let ITIN_KEY=ls.get('scv-itin','clt');
+function renderItin(){if(!ITIN[ITIN_KEY])ITIN_KEY='clt';const it=ITIN[ITIN_KEY];if(!it)return;$$('#seg button').forEach(b=>b.classList.toggle('on',b.dataset.k===ITIN_KEY));$('#itinNote').innerHTML=it.note;
+ $('#days').innerHTML=it.days.map(d=>`<div class="day"><div class="dh"><div class="kicker">${esc(d.date)}</div><h3>${d.title}</h3>${d.sub?`<div style="font-size:13.5px;color:var(--mute);margin-top:6px">${d.sub}</div>`:''}</div><div>${d.rows.map(([k,v])=>`<div class="row"><b>${esc(k)}</b><div>${v}</div></div>`).join('')}</div></div>`).join('');}
+$$('#seg button').forEach(b=>b.onclick=()=>{ITIN_KEY=b.dataset.k;ls.set('scv-itin',ITIN_KEY);renderItin();});
+
+/* ───────────── dinner / things / sports / tips ───────────── */
+function renderExtras(){
+ $('#dinnerOpts').innerHTML=DINNER.map(d=>`<div class="box"><span class="tag ${d.tagc||''}">${esc(d.tag)}</span><h3 style="margin-top:10px">${d.title}</h3><p style="font-size:14.5px;color:var(--ink2)">${d.body}</p>${d.items?`<ul style="margin:0;padding-left:18px;font-size:14px">${d.items.map(i=>`<li>${i}</li>`).join('')}</ul>`:''}</div>`).join('');
+ $('#things').innerHTML=THINGS.map(t=>`<div class="thing"><span class="tag ${t.tagc||''}">${esc(t.tag)}</span><h4>${t.url?`<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.name)} ↗</a>`:esc(t.name)}</h4><div class="m">${esc(t.meta||'')}</div><p>${t.body}</p></div>`).join('');
+ $('#nfl').innerHTML=NFL.map(g=>`<div class="row"><b>${esc(g.time)}</b><div><strong>${esc(g.game)}</strong> <span style="color:var(--mute)">· ${esc(g.net)}</span></div></div>`).join('');
+ $('#local').innerHTML=LOCAL.map(g=>`<div class="row"><b>${esc(g.when)}</b><div><strong>${g.what}</strong>${g.note?`<div style="font-size:13.5px;color:var(--mute)">${g.note}</div>`:''}</div></div>`).join('');
+ $('#tips').innerHTML=TIPS.map(t=>`<div class="box"><h3 style="font-size:20px">${esc(t.h)}</h3><p style="font-size:14.5px;margin:8px 0 0">${t.p}</p></div>`).join('');
+}
+
+/* ───────────── local checklists ───────────── */
+function checklist(elId,key,items,withDue){const done=ls.get(key,{});const el=document.getElementById(elId);
+ el.innerHTML=items.map((it,i)=>{const t=withDue?it.task:it;const id=withDue?it.id:'t'+i;const d=!!done[id];let due='';
+  if(withDue&&it.due){const n=daysLeft(it.due);const cls=n<0?'late':n<=7?'soon':'';due=`<span class="due ${cls}">${it.due.toLocaleDateString('en-US',{month:'short',day:'numeric'})} · ${n<0?Math.abs(n)+'d overdue':n===0?'today':'in '+n+'d'}</span>`;}
+  return `<div class="chk ${d?'done':''}" data-id="${id}"><div class="bx">${d?'✓':''}</div><div style="flex:1"><div class="t">${t}</div>${withDue&&it.detail?`<div style="font-size:13.5px;color:var(--mute)">${it.detail}</div>`:''}</div>${due}</div>`;}).join('');
+ $$('.chk',el).forEach(r=>r.onclick=()=>{done[r.dataset.id]=!done[r.dataset.id];ls.set(key,done);checklist(elId,key,items,withDue);});}
+
+/* ───────────── shared ballot (textdb.online) ───────────── */
+let NAME=ls.get('scv-name',''),DOC=null,ONLINE=true,DIRTY=null;
+const dburl=()=>'https://textdb.online/'+POLL_KEY;
+async function fetchDoc(){const r=await fetch(dburl()+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const t=(await r.text()).trim();if(!t)return{trip:'tg2026',ballots:{},dishes:{}};const d=JSON.parse(t);d.ballots=d.ballots||{};d.dishes=d.dishes||{};return d;}
+async function writeDoc(doc){const qs='key='+encodeURIComponent(POLL_KEY)+'&value='+encodeURIComponent(JSON.stringify(doc));let p=null;try{p=await fetch('https://textdb.online/update/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:qs});}catch(e){}if(!p||!p.ok)p=await fetch('https://textdb.online/update/?'+qs);if(!p.ok)throw 0;const res=await p.json().catch(()=>null);if(res&&res.status!==1)throw 0;}
+async function load(){try{DOC=await fetchDoc();ONLINE=true;if(DIRTY){const d=DIRTY;DIRTY=null;await persist(d);}
+  if(NAME){const local=ls.get('scv-ballot-'+NAME,null);const remote=DOC.ballots[NAME];if(local&&local.t&&(!remote||(remote.t||0)<local.t))await persist({ballot:local});}}
+ catch(e){ONLINE=false;if(!DOC)DOC={trip:'tg2026',ballots:{},dishes:{}};}renderVote();renderDishes();}
+async function persist({ballot,dishes}){if(!NAME)return;const base=DOC||{trip:'tg2026',ballots:{},dishes:{}};
+ if(ballot){base.ballots[NAME]=ballot;ls.set('scv-ballot-'+NAME,ballot);}if(dishes)base.dishes[NAME]=dishes;DOC=base;renderVote();renderDishes();
+ try{const f=await fetchDoc();if(ballot)f.ballots[NAME]=ballot;if(dishes)f.dishes[NAME]=dishes;await writeDoc(f);DOC=f;ONLINE=true;}catch(e){ONLINE=false;DIRTY={ballot,dishes};}renderVote();renderDishes();}
+function myBallot(){return(DOC&&DOC.ballots[NAME])||ls.get('scv-ballot-'+NAME,{})||{};}
+function vote(q,o){if(!NAME){toast('Pick your name first');$('#names').scrollIntoView({behavior:'smooth',block:'center'});return;}if(!VOTING_OPEN){toast('Voting is closed');return;}
+ const Q=QUESTIONS[q];const b={...myBallot()};if(Q.multi){const c=Array.isArray(b[q])?[...b[q]]:[];const i=c.indexOf(o);i>=0?c.splice(i,1):c.push(o);b[q]=c;}else b[q]=b[q]===o?null:o;b.t=Date.now();persist({ballot:b});toast('Saved');}
+function renderVote(){const nb=$('#names');nb.innerHTML=TRAVELERS.map(n=>`<button class="${n===NAME?'on':''}" data-n="${n}">${n}</button>`).join('');
+ $$('button',nb).forEach(b=>b.onclick=()=>{NAME=b.dataset.n;ls.set('scv-name',NAME);renderVote();renderDishes();});
+ const ballots=DOC?DOC.ballots:{};const voted=Object.keys(ballots).filter(n=>Object.keys(ballots[n]).some(k=>k!=='t'&&ballots[n][k]&&(!Array.isArray(ballots[n][k])||ballots[n][k].length))).length;
+ $('#sync').textContent=(ONLINE?`${voted} of ${TRAVELERS.length} have voted`:'Offline. Your votes are saved here and will sync when you’re back online.')+(NAME?'':' · pick your name to vote');
+ $('#questions').innerHTML=Object.entries(QUESTIONS).map(([qid,Q])=>{
+  const opts=Q.opts.map(o=>{const who=TRAVELERS.filter(n=>{const v=ballots[n]?.[qid];return Q.multi?(Array.isArray(v)&&v.includes(o.id)):v===o.id;});return{o,who};});
+  const max=Math.max(1,...opts.map(x=>x.who.length));let lastGrp='';
+  return `<div class="q"><h3>${Q.title}</h3><div class="help">${Q.help||''}${Q.multi?' Pick as many as you like.':''}</div>${opts.map(({o,who})=>{const me=NAME&&who.includes(NAME);const g=o.grp&&o.grp!==lastGrp?`<div class="grp">${esc(o.grp)}</div>`:'';lastGrp=o.grp||lastGrp;
+   return g+`<div class="vo ${Q.multi?'':'one'} ${me?'me':''}" data-q="${qid}" data-o="${o.id}"><div class="bar" style="width:${Math.round(100*who.length/max)}%;opacity:${who.length?1:0}"></div><div class="bx">${me?'✓':''}</div><div style="flex:1"><div class="lab">${o.label}</div>${o.meta?`<div class="mt">${o.meta}</div>`:''}${who.length?`<div class="who">${who.join(', ')}</div>`:''}</div><div class="cnt">${who.length||''}</div></div>`;}).join('')}</div>`;}).join('');
+ $$('.vo').forEach(el=>el.onclick=()=>vote(el.dataset.q,el.dataset.o));}
+function renderDishes(){const dishes=DOC?DOC.dishes:{};const mine=NAME?(dishes[NAME]||[]):[];
+ $('#dishHint').textContent=NAME?`Adding as ${NAME}.`:'Pick your name in the ballot section first.';
+ $('#dishMine').innerHTML=mine.length?mine.map((d,i)=>`<div class="dish"><span>${esc(d)}</span><button class="x" data-i="${i}" title="Remove">✕</button></div>`).join(''):'';
+ $$('#dishMine .x').forEach(b=>b.onclick=()=>{const a=[...mine];a.splice(+b.dataset.i,1);persist({dishes:a});});
+ const all=Object.entries(dishes).flatMap(([n,arr])=>(arr||[]).map(d=>({n,d})));
+ $('#dishAll').innerHTML=`<div class="dish"><span>Turkey</span><span class="by">Cindy</span></div>`+all.map(x=>`<div class="dish"><span>${esc(x.d)}</span><span class="by">${esc(x.n)}</span></div>`).join('');
+ const have=all.map(x=>x.d.toLowerCase());const need=DISH_NEEDS.filter(n=>{const k=n.toLowerCase().split(/[ :/(]/)[0];return !have.some(h=>h.includes(k));});
+ $('#dishNeed').innerHTML=need.length?need.map(n=>`<span class="pill">${esc(n)}</span>`).join(''):'Everything is covered.';}
+$('#dishAdd').onclick=()=>{const v=$('#dishIn').value.trim();if(!v)return;if(!NAME){toast('Pick your name first');return;}persist({dishes:[...((DOC&&DOC.dishes[NAME])||[]),v]});$('#dishIn').value='';toast('Added');};
+$('#dishIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('#dishAdd').click();});
+
+function boot(){renderHouses();renderItin();renderExtras();checklist('pack','scv-pack',PACK,false);checklist('todoList','scv-todo',TODOS,true);renderVote();renderDishes();load();setInterval(load,25000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});spy();}
+</script>
+<script>
+/* ═══════════ CONTENT (was content.js) ═══════════ */
+/* content.js — everything the site says. index.html only renders it.
+   Last checked Oct 29, 2026. Prices and dates can change; links are the source of truth. */
+
+const AB = id => `https://www.airbnb.com/rooms/${id}?check_in=2026-11-24&check_out=2026-11-28&adults=8&children=2`;
+
+/* ───────── House shortlist (from the Airbnb search on Oct 29; all available Nov 24–28, sleep 10) ───────── */
+HOUSES.mtn = [
+  { kind:'mtn', code:'Mtn A', id:'747299435140104977', name:'Cane Creek Cabin', area:'Fletcher, NC', drive:'1 hr 50', br:5, ba:3, rating:'4.93 (14)', total:3460, fc:false,
+    desc:'3,400 square feet, five king beds, a game room with foosball and air hockey, hot tub, fire pit. Between Asheville and Hendersonville.' },
+  { kind:'mtn', code:'Mtn B', id:'1066609093454799038', name:'1906 house in Asheville', area:'Asheville, NC', drive:'2 hr', br:5, ba:2, rating:'4.98 (82)', total:2955, fc:false,
+    desc:'Old house in the middle of Asheville with a wrap-around porch and a seven-person hot tub. Walkable to downtown. Only two bathrooms.' },
+  { kind:'mtn', code:'Mtn C', id:'955775179253163287', name:'Modern house with lake access', area:'Brevard, NC', drive:'2 hr 20', br:5, ba:3.5, rating:'4.92 (26)', total:1578, fc:false,
+    desc:'Newer build near Brevard with access to three lakes. The cheapest well-reviewed option on either list.' },
+  { kind:'mtn', code:'Mtn D', id:'868747285996010808', name:'Waterfront house with two kitchens', area:'Landrum, SC', drive:'1 hr 25', br:5, ba:3, rating:'4.94 (17)', total:1992, fc:false,
+    desc:'On the water in the foothills just over the SC line. Shortest drive of any house on the list and two kitchens for a big dinner.' },
+  { kind:'mtn', code:'Mtn E', id:'9509197', name:'Lakefront on Lake Lure', area:'Lake Lure, NC', drive:'1 hr 40', br:5, ba:2, rating:'4.74 (81)', total:2113, fc:true,
+    desc:'Right on Lake Lure with a dock and deck. Free cancellation. Only two bathrooms, and the reviews are a notch below the others.' },
+  { kind:'mtn', code:'Mtn F', id:'614321663989488925', name:'Triple Peak views', area:'Banner Elk, NC', drive:'2 hr 20', br:5, ba:3, rating:'4.87 (101)', total:3870, fc:false,
+    desc:'High Country house with long views, a hot tub and a wrap-around deck. Coldest option on the list; ten minutes from Tweetsie.' },
+].map(h=>({...h, url:AB(h.id)}));
+
+HOUSES.bch = [
+  { kind:'bch', code:'Beach A', id:'50284700', name:'Waterfront with private pool', area:'Isle of Palms, SC', drive:'3 hr 45', br:5, ba:4.5, rating:'4.87 (30)', total:5644, fc:false,
+    desc:'On the water with a private pool and a big kitchen, twenty minutes from downtown Charleston. The most expensive house on the ballot.' },
+  { kind:'bch', code:'Beach B', id:'47703423', name:'Ocean and lighthouse views', area:'Folly Beach, SC', drive:'3 hr 40', br:5, ba:3.5, rating:'4.98 (146)', total:4553, fc:false,
+    desc:'Waterfront at the east end of Folly with views of the ocean and the Morris Island lighthouse. 146 reviews at 4.98.' },
+  { kind:'bch', code:'Beach C', id:'1176867815489267868', name:'Six bedrooms, five decks', area:'Carolina Beach, NC', drive:'3 hr 45', br:6, ba:4, rating:'4.92 (39)', total:2838, fc:true,
+    desc:'Ocean views from five decks, six bedrooms, free cancellation. Twenty-five minutes from Wilmington and Enchanted Airlie.' },
+  { kind:'bch', code:'Beach D', id:'725991274847455646', name:'Beachfront with saltwater pool', area:'Ocean Isle Beach, NC', drive:'3 hr 30', br:5, ba:4.5, rating:'4.98 (50)', total:2430, fc:false,
+    desc:'On the sand with a private saltwater pool. Best-rated house under $2,500. Ocean Isle’s tree lighting and boat flotilla are that weekend.' },
+  { kind:'bch', code:'Beach E', id:'41291382', name:'Beachfront, unobstructed views', area:'Murrells Inlet, SC', drive:'3 hr 40', br:5, ba:3, rating:'4.98 (103)', total:2414, fc:false,
+    desc:'Oceanfront in Garden City, ten minutes from Brookgreen Gardens for Nights of a Thousand Candles on Friday.' },
+  { kind:'bch', code:'Beach F', id:'563799656307352638', name:'Six bedrooms, pool, 90 seconds to the beach', area:'Pawleys Island, SC', drive:'3 hr 45', br:6, ba:4, rating:'4.95 (86)', total:2770, fc:false,
+    desc:'A short walk to the beach with a private pool and a spare bedroom. Pawleys is the quietest of the beach towns.' },
+].map(h=>({...h, url:AB(h.id)}));
+
+/* ───────── Ballot ───────── */
+QUESTIONS.where = { multi:false, title:'1. Where do we spend the week?', help:'One answer. Every version starts and ends in Charlotte.',
+  opts:[
+    { id:'clt', label:'Charlotte all week', meta:'Cindy & Randy’s as home base. Nothing to book.' },
+    { id:'mtn', label:'Mountain house', meta:'Everyone under one roof, 1½–2½ hours west. Cold and cozy.' },
+    { id:'bch', label:'Beach house', meta:'Everyone under one roof, 3½–4 hours southeast. Mid-60s and sunny.' },
+    { id:'split', label:'Split: Thanksgiving in Charlotte, then Fri–Sat at a house', meta:'Dinner at the Shearers’ Thursday, two nights away after. Shortest booking, most driving.' },
+  ] };
+QUESTIONS.house = { multi:true, title:'2. If we rent a house, which ones would you be happy with?', help:'Check every house you would be fine booking. The most-ticked one that is still available gets booked. Details and links are in Where we stay.',
+  opts:[
+    { id:'747299435140104977', grp:'Mountains', label:'Mtn A · Cane Creek Cabin, Fletcher', meta:'$3,460 · 5 BR / 3 BA · hot tub, game room · 1 hr 50' },
+    { id:'1066609093454799038', grp:'Mountains', label:'Mtn B · 1906 house, Asheville', meta:'$2,955 · 5 BR / 2 BA · walkable, hot tub · 2 hr' },
+    { id:'955775179253163287', grp:'Mountains', label:'Mtn C · Modern house, Brevard', meta:'$1,578 · 5 BR / 3.5 BA · lake access · 2 hr 20' },
+    { id:'868747285996010808', grp:'Mountains', label:'Mtn D · Waterfront house, Landrum SC', meta:'$1,992 · 5 BR / 3 BA · two kitchens · 1 hr 25' },
+    { id:'9509197', grp:'Mountains', label:'Mtn E · Lakefront, Lake Lure', meta:'$2,113 · 5 BR / 2 BA · dock · free cancellation · 1 hr 40' },
+    { id:'614321663989488925', grp:'Mountains', label:'Mtn F · Triple Peak views, Banner Elk', meta:'$3,870 · 5 BR / 3 BA · hot tub · 2 hr 20' },
+    { id:'50284700', grp:'Beach', label:'Beach A · Waterfront with pool, Isle of Palms', meta:'$5,644 · 5 BR / 4.5 BA · 3 hr 45' },
+    { id:'47703423', grp:'Beach', label:'Beach B · Ocean and lighthouse views, Folly Beach', meta:'$4,553 · 5 BR / 3.5 BA · 3 hr 40' },
+    { id:'1176867815489267868', grp:'Beach', label:'Beach C · Six bedrooms, five decks, Carolina Beach', meta:'$2,838 · 6 BR / 4 BA · free cancellation · 3 hr 45' },
+    { id:'725991274847455646', grp:'Beach', label:'Beach D · Beachfront with saltwater pool, Ocean Isle', meta:'$2,430 · 5 BR / 4.5 BA · 3 hr 30' },
+    { id:'41291382', grp:'Beach', label:'Beach E · Beachfront, Murrells Inlet', meta:'$2,414 · 5 BR / 3 BA · 3 hr 40' },
+    { id:'563799656307352638', grp:'Beach', label:'Beach F · Six bedrooms with pool, Pawleys Island', meta:'$2,770 · 6 BR / 4 BA · 3 hr 45' },
+  ] };
+QUESTIONS.dinner = { multi:false, title:'3. Thanksgiving dinner: how do we do it?', help:'Cindy has offered to do the turkey in any version. This is about the rest.',
+  opts:[
+    { id:'cook', label:'Cook it ourselves', meta:'Everyone brings a dish. Sign-up is in the Dinner section.' },
+    { id:'store', label:'Order a heat-and-serve dinner from a grocery store', meta:'Whole Foods, Publix, Harris Teeter or The Fresh Market. Pick up Wednesday, reheat Thursday.' },
+    { id:'togo', label:'Order a restaurant’s Thanksgiving to-go feast', meta:'Sullivan’s does a feast for 10; Mac’s Speed Shop and Midwood Smokehouse do turkey packages.' },
+    { id:'out', label:'Reserve a restaurant for 10', meta:'Maggiano’s SouthPark, Church and Union, Capital Grille or Sullivan’s. No dishes, but a long sit for a two-year-old.' },
+  ] };
+QUESTIONS.outings = { multi:true, title:'4. Which of these would you join?', help:'Charlotte-week outings. None of them conflict with dinner.',
+  opts:[
+    { id:'parade', label:'Thanksgiving Eve Parade uptown', meta:'Wednesday 5:30 PM on Tryon Street. Or on WCCB from the couch.' },
+    { id:'trot', label:'Turkey Trot at SouthPark', meta:'Thursday morning. One-mile at 8:00 and a free Tot Trot at 8:30 for the kids; 5K at 9:10.' },
+    { id:'speedway', label:'Speedway Christmas', meta:'Drive-through lights at Charlotte Motor Speedway, any evening. Nobody gets out of the car.' },
+    { id:'carowinds', label:'Carowinds WinterFest', meta:'Opens Friday. Rides for Emma, lights, a tree-lighting show.' },
+    { id:'knights', label:'Light the Knights at the ballpark', meta:'Ice skating and snow tubing uptown, Friday or Saturday.' },
+    { id:'hornets', label:'Hornets game', meta:'Wednesday 7:30 vs. the Bulls or Saturday 6:00 vs. the Nets.' },
+    { id:'brewery', label:'Afternoon at a biergarten', meta:'Olde Mecklenburg has room for the kids to run.' },
+  ] };
+QUESTIONS.arrive = { multi:false, title:'5. Reids and Garcias: when are you driving down?', help:'Only the two Virginia households need to answer.',
+  opts:[
+    { id:'tueam', label:'Tuesday, early', meta:'On the road by 7 AM, in Charlotte by mid-afternoon.' },
+    { id:'tuepm', label:'Tuesday, after bedtime', meta:'Leave around 7 PM, kids sleep in the car, arrive late.' },
+    { id:'wed', label:'Wednesday morning', meta:'Shorter trip. Still in time for the parade.' },
+  ] };
+
+/* ───────── Dinner options ───────── */
+DINNER.push(
+  { tag:'Cook', title:'Cook it ourselves', body:'Cindy does the turkey; everyone else brings a dish. The sign-up list below tracks who has what. Two ovens between Nolen Lane and Ryan and Kristi’s makes the timing manageable.',
+    items:['Turkey out at 3:30, dinner at 4, done before the second game','Cold dishes travel from Virginia; hot dishes come from Charlotte kitchens','Grocery order for Tuesday delivery is on the to-do list'] },
+  { tag:'Order ahead', tagc:'copper', title:'Heat-and-serve from a grocery store', body:'Fully cooked turkey and sides, picked up Wednesday and reheated Thursday. Less work than cooking and cheaper than a restaurant. For 10 people, order one dinner for 8–10 and add a side or two. There is no Wegmans in Charlotte.',
+    items:['<a href="https://www.publix.com/mc/order-ahead/order-holiday-meals" target="_blank" rel="noopener">Publix</a> complete turkey dinner, serves 7–10, about $70: 10–12 lb turkey, dressing, mashed potatoes, gravy, cranberry relish. Order online 48 hours ahead; last pickup Wed Nov 25, stores closed Thanksgiving.','<a href="https://www.wholefoodsmarket.com/" target="_blank" rel="noopener">Whole Foods</a> (SouthPark) traditional turkey dinner for 8, roughly $130–200 depending on the turkey; order 48 hours ahead; comes cold, 60–90 minutes to heat.','<a href="https://www.thefreshmarket.com/" target="_blank" rel="noopener">The Fresh Market</a> traditional holiday meal for 8–10, about $100 last year, plus Harris Teeter and Costco ($200 for 8). 2026 menus post in early November; order by about Nov 20.'] },
+  { tag:'Restaurant', tagc:'sea', title:'Restaurant to-go, or eat out', body:'Sullivan’s Steakhouse sells a Thanksgiving feast for 10 ($475, pickup Nov 25–26). Mac’s Speed Shop ($195 for 8), Midwood Smokehouse and Hickory & Heart do turkey packages. For eating out, Maggiano’s SouthPark, Church and Union, Capital Grille and Sullivan’s all seat large groups on the day.',
+    items:['To-go orders close Nov 20–25 depending on the restaurant','Dine-in for 10 needs a reservation now','Full list: <a href="https://www.charlotteonthecheap.com/34-charlotte-restaurants-serving-thanksgiving-dinner" target="_blank" rel="noopener">Charlotte on the Cheap</a>'] },
+);
+DISH_NEEDS.push('Stuffing','Mashed potatoes','Gravy','Sweet potatoes','Green beans','Mac and cheese','Rolls','Cranberry sauce','Pumpkin pie','Pecan or apple pie','Wine','Kids’ plates (buttered noodles)','Breakfast casserole for Friday');
+
+/* ───────── Itineraries ───────── */
+const KID = ' <span class="tag" style="font-size:10.5px">kids</span>';
+ITIN.clt = { note:'Assumes Option 1 wins: everyone sleeps at Nolen Lane except Ryan and Kristi, who are ten minutes away. Nothing here needs booking except the Turkey Trot and lights tickets.',
+ days:[
+  { date:'Tuesday · Nov 24', title:'Arrival', rows:[
+    ['Day','Reids (from Vienna) and Garcias (from Manassas) drive down; see The plan for timing. Text the group when you pass Richmond or Roanoke.'],
+    ['Evening','Takeout at Nolen Lane so nobody cooks on a drive day. If everyone is in by 6, Speedway Christmas'+M('Charlotte Motor Speedway')+' is a good first-night outing: drive-through lights, kids in pajamas, 6–10 PM.'+KID],
+  ]},
+  { date:'Wednesday · Nov 25', title:'Prep day and the parade', rows:[
+    ['Morning','Kids to Discovery Place Kids in Huntersville'+M('Discovery Place Kids Huntersville')+' (ages 1–7, opens 9:30) while the kitchen gets going, or Freedom Park'+M('Freedom Park Charlotte')+' if the weather is good.'+KID],
+    ['Midday','Lunch at Optimist Hall'+M('Optimist Hall Charlotte')+': everyone orders their own, plenty of seating.'],
+    ['Afternoon','Pies, sides, brine. Grocery pickup if we ordered a heat-and-serve dinner.'],
+    ['5:30 PM','Novant Health Thanksgiving Eve Parade on Tryon Street'+M('Tryon Street Charlotte')+'. Charlotte’s parade is Wednesday night, not Thursday. Free curb viewing, done by 8; park in a deck off Tryon or take the light rail to 7th Street. On WCCB from 6 for anyone staying home.'+KID],
+    ['Evening','Early dinner at home before the parade. Hornets vs. Bulls at 7:30 is a block from the route if anyone wants to break off.'],
+  ]},
+  { date:'Thursday · Nov 26', title:'Thanksgiving', sub:'Sunset 5:12', rows:[
+    ['8:00 AM','Turkey Trot at SouthPark'+M('SouthPark Mall Charlotte')+'. One-mile at 8:00, Tot Trot at 8:30, 5K at 9:10. Strollers are fine. Register before Oct 31 for the cheaper price.'+KID],
+    ['Late AM','Macy’s parade on NBC for the kids; kitchen for the cooks.'],
+    ['1:00 PM','Bears at Lions, CBS.'],
+    ['4:00 PM','Dinner. Eagles at Cowboys kicks off at 4:30, so the table is set by 4.'],
+    ['After','Family photo in the yard before the light goes. Pie, the 8:20 game, and Speedway Christmas for anyone who didn’t go Tuesday. Light the Knights, Carowinds and Daniel Stowe are all closed Thursday.'],
+  ]},
+  { date:'Friday · Nov 27', title:'Leftovers and lights', rows:[
+    ['Morning','Sleep in. Breakfast casserole. Anyone who wants Black Friday does SouthPark early; it opens at 6.'],
+    ['Midday','Camp North End'+M('Camp North End Charlotte')+' (flat, outdoor, food stalls) or the Whitewater Center'+M('US National Whitewater Center')+' for a riverside walk. Olde Mecklenburg’s biergarten'+M('Olde Mecklenburg Brewery')+' for a late lunch.'+KID],
+    ['Evening','Two openers to choose from: Carowinds WinterFest'+M('Carowinds')+' (kid rides, lights, tree-lighting show, 20 minutes south) or Light the Knights at Truist Field'+M('Truist Field Charlotte')+' (skating, tubing, Santa).'+KID],
+  ]},
+  { date:'Saturday · Nov 28', title:'Departure', rows:[
+    ['Morning','Virginia cars on the road by 9. Winston pickup Sunday morning.'],
+    ['Afternoon','For the Charlotte households: South Carolina at Clemson and NC State at UNC are both that afternoon. Holidays at the Garden at Daniel Stowe'+M('Daniel Stowe Botanical Garden')+' opens for the season at 5; Hornets vs. Nets at 6.'],
+  ]},
+ ]};
+ITIN.mtn = { note:'Assumes Option 2 wins with an Asheville-area house (Mtn A–E). For Banner Elk, swap Biltmore for Tweetsie Christmas and add 30 minutes to the drive. Check-in is usually 4 PM, checkout 10 or 11 AM.',
+ days:[
+  { date:'Tuesday · Nov 24', title:'Drive to the mountains', rows:[
+    ['Day','Virginia cars go straight to the house (Vienna or Manassas to Asheville is about 6½–7 hours via I-81 and I-26). Charlotte cars leave after lunch; 1½–2½ hours.'],
+    ['4:00 PM','Check in. Whoever arrives first does the grocery run; the big order is placed for pickup at the Hendersonville or Asheville Ingles on the way in.'],
+    ['Evening','Takeout or a big pot of something. Hot tub. Early night for the kids after the drive.'],
+  ]},
+  { date:'Wednesday · Nov 25', title:'Biltmore and a town', rows:[
+    ['Morning','Christmas at Biltmore'+M('Biltmore Estate')+'. The house is decorated from Nov 3; daytime tickets are timed, so buy them now. Allow three hours with the kids; the Antler Hill farmyard is the part they will remember.'+KID],
+    ['Lunch','Hendersonville’s Main Street or Black Mountain, depending on the house. Both are flat and stroller-friendly with places to eat.'],
+    ['Afternoon','Pies and sides. The parade is on WCCB at 6 if anyone wants it; Packers at Rams on Netflix at 8.'],
+    ['Evening','Fire pit, s’mores, bourbon.'],
+  ]},
+  { date:'Thursday · Nov 26', title:'Thanksgiving', sub:'Sunset 5:20 in the mountains', rows:[
+    ['Morning','A short walk. Jump Off Rock'+M('Jump Off Rock Laurel Park')+' is a drive-up overlook near Hendersonville; the Carl Sandburg Home'+M('Carl Sandburg Home')+' in Flat Rock has flat paths and goats. Lake Lure’s Flowering Bridge'+M('Lake Lure Flowering Bridge')+' if we are there.'+KID],
+    ['Midday','Macy’s parade on, turkey in. If we ordered a heat-and-serve dinner, this is the reheating window.'],
+    ['1:00 PM','Football. Check the house has the channels before Tuesday; a lot of mountain houses have streaming only, and cell service is thin.'],
+    ['4:00 PM','Dinner.'],
+    ['Evening','Hot tub, pie, the night game.'],
+  ]},
+  { date:'Friday · Nov 27', title:'Chimney Rock or the gem mine', rows:[
+    ['Morning','Chimney Rock State Park'+M('Chimney Rock State Park')+' is open again and has an elevator to the top. Or Elijah Mountain Gem Mine'+M('Elijah Mountain Gem Mine')+' in Hendersonville, which has covered flumes and a goat farm; the kids will choose this one.'+KID],
+    ['Afternoon','Leftovers. Nap. A brewery with a yard for whoever wants one: Sierra Nevada in Mills River'+M('Sierra Nevada Brewing Mills River')+' has a big one and a kids’ menu.'],
+    ['Evening','Last night at the house. Pack what you can.'],
+  ]},
+  { date:'Saturday · Nov 28', title:'Checkout and home', rows:[
+    ['Morning','Out by 10. Charlotte cars home by lunch. Virginia cars take I-26 to I-81; about 7 hours, so leave straight from the house.'],
+  ]},
+ ]};
+ITIN.bch = { note:'Assumes Option 3 wins. Written for the Brunswick or Grand Strand beaches (Beach C–F); for Charleston (Beach A–B), swap in the Festival of Lights at James Island and the SC Aquarium. Check-in is usually 4 PM.',
+ days:[
+  { date:'Tuesday · Nov 24', title:'Drive to the coast', rows:[
+    ['Day','Charlotte cars leave after lunch (3½–4 hours). Virginia cars can go straight to the beach: Vienna or Manassas to Ocean Isle is about 6½ hours via I-95 and US-74, roughly the same as driving to Charlotte.'],
+    ['4:00 PM','Check in. Grocery order for pickup at the nearest Publix or Food Lion on the way in.'],
+    ['Evening','Takeout. Beach walk at sunset if the kids are up for it.'],
+  ]},
+  { date:'Wednesday · Nov 25', title:'Beach day', rows:[
+    ['Morning','The beach. It is in the 60s and empty; bring sand toys and jackets.'+KID],
+    ['Midday','Lunch out. Southport'+M('Southport NC waterfront')+' is the nicest town on the Brunswick coast for a walk; Murrells Inlet’s Marshwalk'+M('Murrells Inlet Marshwalk')+' if we are on the Grand Strand.'],
+    ['Afternoon','Pies and sides. The parade is on WCCB at 6; Packers at Rams on Netflix at 8.'],
+    ['Evening','Dinner at the house.'],
+  ]},
+  { date:'Thursday · Nov 26', title:'Thanksgiving', sub:'Sunset 5:10 on the coast', rows:[
+    ['Morning','A turkey trot if there is one nearby (Wilmington and Myrtle Beach both have them), otherwise a long beach walk.'],
+    ['Midday','Macy’s parade on, turkey in. If we ordered a heat-and-serve dinner, this is the reheating window.'],
+    ['1:00 PM','Football.'],
+    ['4:00 PM','Dinner.'],
+    ['Evening','Pie and the night game. Beach houses are big on decks; bring blankets.'],
+  ]},
+  { date:'Friday · Nov 27', title:'Aquarium and lights', rows:[
+    ['Morning','NC Aquarium at Fort Fisher'+M('NC Aquarium at Fort Fisher')+' (ten minutes from Kure, 45 from Ocean Isle via the ferry) or Ripley’s Aquarium in Myrtle Beach'+M('Ripleys Aquarium Myrtle Beach')+'.'+KID],
+    ['Afternoon','Leftovers. Nap. Beach.'],
+    ['Evening','Lights: Nights of a Thousand Candles at Brookgreen Gardens'+M('Brookgreen Gardens')+' (Fri–Sun, 4–9 PM, tickets ahead) or Enchanted Airlie in Wilmington'+M('Airlie Gardens')+' (Nov 27–28, timed entry, sells out). Ocean Isle’s own tree lighting is Friday evening on the island.'+KID],
+  ]},
+  { date:'Saturday · Nov 28', title:'Checkout and home', rows:[
+    ['Morning','Out by 10. Charlotte cars home by mid-afternoon. Virginia cars take US-74 to I-95; leave early, I-95 north of Richmond slows by 1 PM.'],
+  ]},
+ ]};
+
+/* ───────── To-dos ───────── */
+const _d=(m,d)=>new Date(2026,m-1,d);
+TODOS.push(
+  { id:'trot', task:'Register for the Turkey Trot', due:_d(10,31), detail:'Prices go up Nov 1. One-mile and Tot Trot are free for 8 and under; 5K/8K $50. runsignup.com → Charlotte Turkey Trot.' },
+  { id:'vote', task:'Everyone votes', due:_d(11,4), detail:'Where, which house, dinner, outings, arrival day.' },
+  { id:'book', task:'Book the house, if a house wins', due:_d(11,5), detail:'James books from the shortlist the day after the vote closes. Most of these are non-refundable 30 days out, which is now.' },
+  { id:'flights', task:'Cancel the Grenada flights', due:_d(11,6), detail:'AA confirmations NOJQXU (Cindy, Randy, Ryan, Kristi), OZKTXP (Danielle, Edgar), MSBEWC (Reids). Ask for a refund rather than a credit if the fare allows.' },
+  { id:'refunds', task:'Confirm the Royalton refunds landed', due:_d(11,10), detail:'Cancellation numbers 63043116 and 63095420, both cancelled Oct 25. Cindy’s three rooms are on her account. The Viator snorkel trip was booked by Cindy.' },
+  { id:'winston', task:'Confirm Winston’s boarding dates', due:_d(11,7), detail:'Pender Pet Retreat. Nov 23–29 as booked, or shift a day if we leave Tuesday.' },
+  { id:'sitter', task:'Confirm the Garcias’ pet sitter', due:_d(11,7), detail:'Same dates, twice a day.' },
+  { id:'lights', task:'Buy lights tickets', due:_d(11,14), detail:'Speedway Christmas is per car. Brookgreen and Enchanted Airlie sell out for Thanksgiving weekend if the beach wins. Biltmore daytime tickets if the mountains win.' },
+  { id:'dinner', task:'Dinner decided and ordered', due:_d(11,18), detail:'If cooking: dish list filled in. If ordering: grocery heat-and-serve orders need about a week; Hickory & Heart closes Nov 20, Sullivan’s and Mac’s take orders to Nov 25.' },
+  { id:'turkey', task:'Cindy orders the turkey', due:_d(11,19), detail:'20-plus pounds for 10, or two smaller birds. Reid’s Fine Foods does pickup Nov 24–25.' },
+  { id:'grocery', task:'Grocery order for Tuesday delivery', due:_d(11,23), detail:'To Nolen Lane, or pickup near the house if we rented one. Toddler staples on the list.' },
+  { id:'cars', task:'Oil, tires, car seats checked', due:_d(11,23), detail:'Both Virginia cars.' },
+);
+PACK.push('Car seats (both)','Pack-and-play and sheets','Stroller','Sound machines','Kids’ medicine, thermometer','Favorite stuffed animals','Warm layers; it is 40° at night','Rain jackets','Your Thanksgiving dish and a serving spoon','Cooler bag','Chargers, car charger','Football','Cards and a board game','Bourbon for Randy','Blankets for the lights outings');
+
+/* ───────── Around Charlotte ───────── */
+THINGS.push(
+  { tag:'Thanksgiving', name:'Novant Health Thanksgiving Eve Parade', url:'https://www.novanthealththanksgivingparade.com/parade-info', meta:'Wed Nov 25 · 5:30 PM · Tryon St · WCCB', body:'About a mile down Tryon from 9th Street. Free curb seating, rain or shine. Light rail stops at 7th Street and the arena.' },
+  { tag:'Thanksgiving', name:'Charlotte Turkey Trot', url:'https://runsignup.com/Race/NC/Charlotte/CHARLOTTETURKEYTROT', meta:'Thu Nov 26 · SouthPark · from 8 AM', body:'8K at 8:10, one-mile at 8:00, free Tot Trot at 8:30, 5K at 9:10. $50 for the 5K and 8K until Oct 31, more after.' },
+  { tag:'Thanksgiving', name:'Thanksgiving to-go and dine-in', url:'https://www.charlotteonthecheap.com/thanksgiving-meals-to-go', meta:'If the ballot goes that way', body:'Sullivan’s feast for 10 ($475), Mac’s Speed Shop for 8 ($195), Midwood Smokehouse, Hickory & Heart. Dine-in for 10: Maggiano’s SouthPark, Church and Union, Capital Grille, Sullivan’s.' },
+  { tag:'Lights', tagc:'copper', name:'Speedway Christmas', url:'https://www.charlotteonthecheap.com/speedway-christmas-charlotte-motor-speedway', meta:'Charlotte Motor Speedway · per car from ~$46 · 6–10 PM', body:'Drive-through light show around the track, with a Christmas village in the infield Thursday to Sunday. 2026 dates are not posted yet; it has opened the week before Thanksgiving every year.' },
+  { tag:'Lights', tagc:'copper', name:'Light the Knights', url:'https://www.charlotteonthecheap.com/light-the-knights', meta:'Truist Field uptown · from $12', body:'Ice rink, snow tubing, lights and Santa at the ballpark. Opens Thanksgiving Eve, closed Thanksgiving Day, open Friday and Saturday.' },
+  { tag:'Lights', tagc:'copper', name:'Carowinds WinterFest', url:'https://www.sixflags.com/carowinds/events/winterfest', meta:'Opens Fri Nov 27 · Fort Mill', body:'Lights, kid rides, ice skating, tree-lighting show. Friday and Saturday only for our dates. Tickets ahead.' },
+  { tag:'Lights', tagc:'copper', name:'Holidays at the Garden, Daniel Stowe', url:'https://danielstoweconservancy.org/event/holidays-at-the-garden-5/', meta:'Belmont · opens Sat Nov 28 · 5–10 PM', body:'Walkable lights through the gardens. $28 adults, $25 kids 2–12, under 2 free. Flat paths, free parking.' },
+  { tag:'Closed', tagc:'sand', name:'Christmas Town USA, McAdenville', url:'https://townofmcadenville.org/visitors/christmas-town-usa/', meta:'Dec 1–26', body:'Not open our week. Noted so nobody drives out there.' },
+  { tag:'Kids', tagc:'sea', name:'Discovery Place Kids', url:'https://kids.discoveryplace.org/admission/', meta:'Huntersville · ages 1–7 · Tue–Sun 9:30–4:30 · $15 online', body:'A museum built for David and Emma’s ages. Five minutes from Birkdale Village, which has an ice rink from Nov 21.' },
+  { tag:'Kids', tagc:'sea', name:'Discovery Place Science', url:'https://discoveryplace.org/visit/admission', meta:'Uptown · 10–5 · closed Thanksgiving', body:'Rainforest, aquarium, a toddler area. Discovery Place Nature by Freedom Park is closed for a rebuild.' },
+  { tag:'Kids', tagc:'sea', name:'SEA LIFE Charlotte-Concord', url:'https://www.visitsealife.com/charlotte-concord/', meta:'Concord Mills · indoor', body:'Aquarium inside the mall, 20 minutes northeast. Pairs with Speedway Christmas the same evening.' },
+  { tag:'Easy', name:'Freedom Park', url:'https://www.mecknc.gov/ParkandRec/Parks/Pages/FreedomPark.aspx', meta:'Dilworth · free', body:'Big playground, paved loop around the lake, ducks. The default when everyone needs air.' },
+  { tag:'Easy', name:'Optimist Hall', url:'https://optimisthall.com/', meta:'Food hall · 20+ vendors', body:'Everyone orders what they want. Lots of seating, high chairs.' },
+  { tag:'Easy', name:'Olde Mecklenburg Brewery', url:'https://www.ombbeer.com/', meta:'LoSo · opens 11 · kids’ menu', body:'One-acre biergarten with a grassy yard and cornhole. Brewers at 4001 Yancey next door has an enclosed play area.' },
+  { tag:'Easy', name:'Mint Museum, free Wednesday nights', url:'https://www.mintmuseum.org/plan-your-visit/', meta:'Wed 5–9 PM free · 18 and under free', body:'Uptown, a block from the parade route. Closed Thanksgiving Day.' },
+);
+NFL.push(
+  { time:'Wed 8:00 PM', game:'Packers at Rams', net:'Netflix' },
+  { time:'Thu 1:00 PM', game:'Bears at Lions', net:'CBS' },
+  { time:'Thu 4:30 PM', game:'Eagles at Cowboys', net:'FOX' },
+  { time:'Thu 8:20 PM', game:'Chiefs at Bills', net:'NBC' },
+);
+LOCAL.push(
+  { when:'Panthers', what:'No home game our week', note:'Home vs. Ravens Sun Nov 22, before we arrive; Monday night at Tampa Bay Nov 30, after we leave.' },
+  { when:'Wed 7:30', what:'Hornets vs. Bulls', note:'Spectrum Center, on the parade route.' },
+  { when:'Sat 6:00', what:'Hornets vs. Nets', note:'Early tip; fine for kids.' },
+  { when:'Sat', what:'South Carolina at Clemson', note:'Kickoff and TV set about 12 days out.' },
+  { when:'Sat', what:'NC State at North Carolina', note:'Chapel Hill. Time TBA.' },
+);
+TIPS.push(
+  { h:'Weather', p:'Late November in Charlotte averages 60° by day and 41° at night, with about a one-in-five chance of rain on any day. The mountains run ten degrees colder; the coast a few degrees warmer. Sunrise 7:10, sunset 5:12.' },
+  { h:'Getting around', p:'Everyone has a car. For the parade, park in a deck off Tryon or ride the light rail to 7th Street. SouthPark Mall is closed Thanksgiving and busy Friday. Uber and Lyft are normal.' },
+  { h:'If a house wins', p:'This page gets rewritten for the house: check-in details, door code, grocery plan, nearest urgent care. Several mountain listings warn about weak cell service, so download maps before leaving Charlotte.' },
+  { h:'Money', p:'A rental is split four ways by household, same as Grenada. Thanksgiving groceries or the heat-and-serve order go on one card and get settled on Venmo.' },
+);
+
+/* ═══════════ END CONTENT ═══════════ */
+boot();
+</script>
+</body>
+</html>
