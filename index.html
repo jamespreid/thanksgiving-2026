@@ -39,7 +39,7 @@
   input[type=text],input[type=password]{font:inherit;font-size:16px;padding:12px 14px;border:1px solid var(--line);background:#fff;color:var(--ink);outline:none;width:100%}
   input:focus{border-color:var(--copper)}
   .tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;background:var(--mist);color:var(--green)}
-  .tag.copper{background:var(--copper2);color:#7A3D14}.tag.sea{background:#D9E7EF;color:#1D4A63}.tag.sand{background:var(--sand);color:#6B4F1C}
+  .tag.copper{background:var(--copper2);color:#7A3D14}.tag.green{background:#DCEBDD;color:#24523A}.tag.amber{background:#F4E7C8;color:#6B4F1C}.tag.red{background:#F3D9D3;color:#7A2A1E}.tag.sea{background:#D9E7EF;color:#1D4A63}.tag.sand{background:var(--sand);color:#6B4F1C}
   /* nav */
   .nav{position:sticky;top:0;z-index:50;background:rgba(245,240,230,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
   .nav .wrap{display:flex;align-items:center;height:60px;gap:20px}
@@ -94,7 +94,10 @@
   .kv b{font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:3px}
   .opt ul{margin:0;padding-left:18px;font-size:14.5px}
   /* house cards */
-  .house{background:var(--paper);border:1px solid var(--line);padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:6px 16px}
+  .house{background:var(--paper);border:1px solid var(--line);padding:0 0 18px;display:grid;grid-template-columns:1fr auto;gap:6px 16px}
+  .house .ph{grid-column:1/-1;aspect-ratio:16/9;overflow:hidden;background:var(--bg2);margin-bottom:10px}
+  .house .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .house>*:not(.ph){margin-left:20px}.house>.price{margin-right:20px}.house>.meta,.house>.d,.house>.act{margin-right:20px}
   .house .t{font-family:Fraunces,serif;font-size:20px;line-height:1.2}
   .house .t a{color:inherit;text-decoration:none}
   .house .price{font-family:Fraunces,serif;font-size:22px;text-align:right;white-space:nowrap}
@@ -301,7 +304,7 @@
     <div class="grid g2" id="mtnHouses"></div>
 
     <div class="kicker" id="bchList" style="margin:36px 0 4px;scroll-margin-top:104px">Beach shortlist</div>
-    <p style="font-size:14.5px;color:var(--mute);margin-bottom:14px">Same search. Prices are generally lower than the mountains because the coast is off-season.</p>
+    <p style="font-size:14.5px;color:var(--mute);margin-bottom:14px">Same search. Prices are generally lower than the mountains because the coast is off-season. Cancellation terms are each listing’s policy for our dates: “partial refund” is Airbnb’s strict policy, usually 50% back if you cancel a week or more before check-in.</p>
     <div class="grid g2" id="bchHouses"></div>
   </div>
 </section>
@@ -380,7 +383,7 @@
   <div class="wrap">
     <div class="num">06</div>
     <h2>To-dos and deadlines</h2>
-    <p class="lede">Check things off as they get done. Ticks save on your own device; day counts update themselves.</p>
+    <p class="lede">Check things off as they get done. Ticks are shared, so everyone sees the same list. Day counts update themselves.</p>
     <div class="box" id="todoList"></div>
   </div>
 </section>
@@ -400,9 +403,13 @@
 
     <div class="grid g2" id="packing" style="margin-top:18px;scroll-margin-top:104px">
       <div><div class="grid" id="tips"></div></div>
-      <div class="box"><div class="kicker">Packing list</div><div id="pack" style="margin-top:4px"></div></div>
+      <div class="box"><div class="kicker">Packing list</div><div style="font-size:13px;color:var(--mute);margin-top:4px">Your own list, saved under your name, so it follows you between phone and laptop.</div><div id="pack" style="margin-top:4px"></div></div>
     </div>
 
+    <div class="box" id="contacts" style="margin-top:18px;scroll-margin-top:104px">
+      <div class="kicker">Contacts</div>
+      <div class="grid g4" style="margin-top:10px;font-size:14.5px" id="contactList"></div>
+    </div>
     <div class="grid g2" id="pets" style="margin-top:18px;scroll-margin-top:104px">
       <div class="box"><h3 style="font-size:20px">Winston</h3><p style="font-size:14.5px;margin:8px 0 0">Boarding at Pender Pet Retreat. Confirm the dates once we know whether the Reids leave Tuesday or Wednesday.</p></div>
       <div class="box"><h3 style="font-size:20px">The Garcia animals</h3><p style="font-size:14.5px;margin:8px 0 0">In-home sitter, twice a day, same as the Grenada plan. Sitter’s number is in the group chat.</p></div>
@@ -430,6 +437,7 @@ const TIPS = window.TIPS = [];
 const TODOS = window.TODOS = [];
 const PACK = window.PACK = [];
 const DISH_NEEDS = window.DISH_NEEDS = [];
+const CONTACTS = window.CONTACTS = [];
 
 /* ───────────── helpers ───────────── */
 const $=(s,el=document)=>el.querySelector(s), $$=(s,el=document)=>[...el.querySelectorAll(s)];
@@ -451,8 +459,8 @@ $$('video').forEach(v=>{v.muted=true;const go=()=>v.play().catch(()=>{});go();v.
 const PARTS={plan:{label:'The plan',chips:[['#plan','Overview'],['#drive','The drive']]},
  stay:{label:'Where we stay',chips:[['#stay','Options'],['#mtnList','Mountain shortlist'],['#bchList','Beach shortlist']]},
  week:{label:'The week',chips:[['#itinerary','Itinerary'],['#vote','Vote'],['#dinner','Dinner'],['#todo','To-dos']]},
- more:{label:'More',chips:[['#more','Around Charlotte'],['#sports','Sports'],['#packing','Packing & tips'],['#pets','Pets']]}};
-const PART_OF={plan:'plan',drive:'plan',stay:'stay',mtnList:'stay',bchList:'stay',itinerary:'week',vote:'week',dinner:'week',todo:'week',more:'more',sports:'more',packing:'more',pets:'more'};
+ more:{label:'More',chips:[['#more','Around Charlotte'],['#sports','Sports'],['#packing','Packing & tips'],['#contacts','Contacts'],['#pets','Pets']]}};
+const PART_OF={plan:'plan',drive:'plan',stay:'stay',mtnList:'stay',bchList:'stay',itinerary:'week',vote:'week',dinner:'week',todo:'week',more:'more',sports:'more',packing:'more',contacts:'more',pets:'more'};
 const ANCHORS=Object.keys(PART_OF);
 function spy(){const y=window.scrollY+110;let cur='';ANCHORS.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top+window.scrollY<=y)cur=id;});
  const part=PART_OF[cur]||'';$$('#links a').forEach(a=>a.classList.toggle('on',a.dataset.part===part));
@@ -463,9 +471,10 @@ window.addEventListener('scroll',spy,{passive:true});
 
 /* ───────────── houses ───────────── */
 function houseCard(h){return `<div class="house">
-  <div><span class="tag ${h.kind==='mtn'?'copper':'sea'}">${esc(h.code)}</span><div class="t" style="margin-top:6px"><a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.name)}</a></div></div>
+  <a class="ph" href="${esc(h.url)}" target="_blank" rel="noopener"><img src="media/houses/${h.id}.jpg" alt="" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
+  <div><span class="tag ${h.kind==='mtn'?'copper':'sea'}">${esc(h.code)}</span> <span class="tag ${h.cancc||''}">${esc(h.canc||'Cancellation: see listing')}</span><div class="t" style="margin-top:6px"><a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.name)}</a></div></div>
   <div class="price">$${h.total.toLocaleString()}<small>4 nights · $${Math.round(h.total/4).toLocaleString()} per household</small></div>
-  <div class="meta">${esc(h.area)} · ${h.drive} from Charlotte · ${h.br} BR / ${h.ba} BA · ${h.rating?esc(h.rating):'new listing'}${h.fc?' · free cancellation':''}</div>
+  <div class="meta">${esc(h.area)} · ${h.drive} from Charlotte · ${h.br} BR / ${h.ba} BA · ${h.rating?esc(h.rating):'new listing'}</div>
   <div class="d">${h.desc}</div>
   <div class="act"><a href="${esc(h.url)}" target="_blank" rel="noopener">Airbnb listing ↗</a><a href="https://www.google.com/maps/search/${encodeURIComponent(h.area)}" target="_blank" rel="noopener">Map ↗</a></div>
 </div>`;}
@@ -483,32 +492,33 @@ function renderExtras(){
  $('#things').innerHTML=THINGS.map(t=>`<div class="thing"><span class="tag ${t.tagc||''}">${esc(t.tag)}</span><h4>${t.url?`<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.name)} ↗</a>`:esc(t.name)}</h4><div class="m">${esc(t.meta||'')}</div><p>${t.body}</p></div>`).join('');
  $('#nfl').innerHTML=NFL.map(g=>`<div class="row"><b>${esc(g.time)}</b><div><strong>${esc(g.game)}</strong> <span style="color:var(--mute)">· ${esc(g.net)}</span></div></div>`).join('');
  $('#local').innerHTML=LOCAL.map(g=>`<div class="row"><b>${esc(g.when)}</b><div><strong>${g.what}</strong>${g.note?`<div style="font-size:13.5px;color:var(--mute)">${g.note}</div>`:''}</div></div>`).join('');
+ $('#contactList').innerHTML=CONTACTS.map(c=>`<div><strong>${esc(c.n)}</strong><div style="color:var(--mute);font-size:13.5px">${esc(c.r)}</div>${c.addr?`<div><a href="https://www.google.com/maps/search/${encodeURIComponent(c.addr)}" target="_blank" rel="noopener">${esc(c.addr)}</a></div>`:''}${c.tel?`<div><a href="tel:${esc(c.tel.replace(/[^+\d]/g,''))}">${esc(c.tel)}</a></div>`:'<div style="color:var(--mute)">phone: add me</div>'}${c.em?`<div><a href="mailto:${esc(c.em)}">${esc(c.em)}</a></div>`:''}</div>`).join('');
  $('#tips').innerHTML=TIPS.map(t=>`<div class="box"><h3 style="font-size:20px">${esc(t.h)}</h3><p style="font-size:14.5px;margin:8px 0 0">${t.p}</p></div>`).join('');
 }
 
 /* ───────────── local checklists ───────────── */
-function checklist(elId,key,items,withDue){const done=ls.get(key,{});const el=document.getElementById(elId);
+function checklist(elId,key,items,withDue){const shared=key==='todos'?((DOC&&DOC.todos)||{}):((DOC&&DOC.pack&&NAME&&DOC.pack[NAME])||{});const done={...ls.get(key+'-'+(key==='todos'?'all':NAME||'anon'),{}),...shared};const el=document.getElementById(elId);
  el.innerHTML=items.map((it,i)=>{const t=withDue?it.task:it;const id=withDue?it.id:'t'+i;const d=!!done[id];let due='';
   if(withDue&&it.due){const n=daysLeft(it.due);const cls=n<0?'late':n<=7?'soon':'';due=`<span class="due ${cls}">${it.due.toLocaleDateString('en-US',{month:'short',day:'numeric'})} · ${n<0?Math.abs(n)+'d overdue':n===0?'today':'in '+n+'d'}</span>`;}
   return `<div class="chk ${d?'done':''}" data-id="${id}"><div class="bx">${d?'✓':''}</div><div style="flex:1"><div class="t">${t}</div>${withDue&&it.detail?`<div style="font-size:13.5px;color:var(--mute)">${it.detail}</div>`:''}</div>${due}</div>`;}).join('');
- $$('.chk',el).forEach(r=>r.onclick=()=>{done[r.dataset.id]=!done[r.dataset.id];ls.set(key,done);checklist(elId,key,items,withDue);});}
+ $$('.chk',el).forEach(r=>r.onclick=()=>{if(key==='pack'&&!NAME){toast('Pick your name in the ballot section first');return;}done[r.dataset.id]=!done[r.dataset.id];ls.set(key+'-'+(key==='todos'?'all':NAME||'anon'),done);if(key==='todos')persist({todos:done});else persist({pack:done});checklist(elId,key,items,withDue);});}
 
 /* ───────────── shared ballot (textdb.online) ───────────── */
 let NAME=ls.get('scv-name',''),DOC=null,ONLINE=true,DIRTY=null;
 const dburl=()=>'https://textdb.online/'+POLL_KEY;
-async function fetchDoc(){const r=await fetch(dburl()+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const t=(await r.text()).trim();if(!t)return{trip:'tg2026',ballots:{},dishes:{}};const d=JSON.parse(t);d.ballots=d.ballots||{};d.dishes=d.dishes||{};return d;}
+async function fetchDoc(){const r=await fetch(dburl()+'?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;const t=(await r.text()).trim();if(!t)return{trip:'tg2026',ballots:{},dishes:{},todos:{},pack:{}};const d=JSON.parse(t);d.ballots=d.ballots||{};d.dishes=d.dishes||{};d.todos=d.todos||{};d.pack=d.pack||{};return d;}
 async function writeDoc(doc){const qs='key='+encodeURIComponent(POLL_KEY)+'&value='+encodeURIComponent(JSON.stringify(doc));let p=null;try{p=await fetch('https://textdb.online/update/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:qs});}catch(e){}if(!p||!p.ok)p=await fetch('https://textdb.online/update/?'+qs);if(!p.ok)throw 0;const res=await p.json().catch(()=>null);if(res&&res.status!==1)throw 0;}
 async function load(){try{DOC=await fetchDoc();ONLINE=true;if(DIRTY){const d=DIRTY;DIRTY=null;await persist(d);}
   if(NAME){const local=ls.get('scv-ballot-'+NAME,null);const remote=DOC.ballots[NAME];if(local&&local.t&&(!remote||(remote.t||0)<local.t))await persist({ballot:local});}}
- catch(e){ONLINE=false;if(!DOC)DOC={trip:'tg2026',ballots:{},dishes:{}};}renderVote();renderDishes();}
-async function persist({ballot,dishes}){if(!NAME)return;const base=DOC||{trip:'tg2026',ballots:{},dishes:{}};
- if(ballot){base.ballots[NAME]=ballot;ls.set('scv-ballot-'+NAME,ballot);}if(dishes)base.dishes[NAME]=dishes;DOC=base;renderVote();renderDishes();
- try{const f=await fetchDoc();if(ballot)f.ballots[NAME]=ballot;if(dishes)f.dishes[NAME]=dishes;await writeDoc(f);DOC=f;ONLINE=true;}catch(e){ONLINE=false;DIRTY={ballot,dishes};}renderVote();renderDishes();}
+ catch(e){ONLINE=false;if(!DOC)DOC={trip:'tg2026',ballots:{},dishes:{},todos:{},pack:{}};}renderVote();renderDishes();renderLists();}
+async function persist({ballot,dishes,todos,pack}){if(!NAME&&!todos)return;const base=DOC||{trip:'tg2026',ballots:{},dishes:{},todos:{},pack:{}};base.todos=base.todos||{};base.pack=base.pack||{};
+ if(ballot){base.ballots[NAME]=ballot;ls.set('scv-ballot-'+NAME,ballot);}if(dishes)base.dishes[NAME]=dishes;if(todos)base.todos=todos;if(pack)base.pack[NAME]=pack;DOC=base;renderVote();renderDishes();renderLists();
+ try{const f=await fetchDoc();if(ballot)f.ballots[NAME]=ballot;if(dishes)f.dishes[NAME]=dishes;if(todos)f.todos=todos;if(pack)f.pack[NAME]=pack;await writeDoc(f);DOC=f;ONLINE=true;}catch(e){ONLINE=false;DIRTY={ballot,dishes,todos,pack};}renderVote();renderDishes();renderLists();}
 function myBallot(){return(DOC&&DOC.ballots[NAME])||ls.get('scv-ballot-'+NAME,{})||{};}
 function vote(q,o){if(!NAME){toast('Pick your name first');$('#names').scrollIntoView({behavior:'smooth',block:'center'});return;}if(!VOTING_OPEN){toast('Voting is closed');return;}
  const Q=QUESTIONS[q];const b={...myBallot()};if(Q.multi){const c=Array.isArray(b[q])?[...b[q]]:[];const i=c.indexOf(o);i>=0?c.splice(i,1):c.push(o);b[q]=c;}else b[q]=b[q]===o?null:o;b.t=Date.now();persist({ballot:b});toast('Saved');}
 function renderVote(){const nb=$('#names');nb.innerHTML=TRAVELERS.map(n=>`<button class="${n===NAME?'on':''}" data-n="${n}">${n}</button>`).join('');
- $$('button',nb).forEach(b=>b.onclick=()=>{NAME=b.dataset.n;ls.set('scv-name',NAME);renderVote();renderDishes();});
+ $$('button',nb).forEach(b=>b.onclick=()=>{NAME=b.dataset.n;ls.set('scv-name',NAME);renderVote();renderDishes();renderLists();});
  const ballots=DOC?DOC.ballots:{};const voted=Object.keys(ballots).filter(n=>Object.keys(ballots[n]).some(k=>k!=='t'&&ballots[n][k]&&(!Array.isArray(ballots[n][k])||ballots[n][k].length))).length;
  $('#sync').textContent=(ONLINE?`${voted} of ${TRAVELERS.length} have voted`:'Offline. Your votes are saved here and will sync when you’re back online.')+(NAME?'':' · pick your name to vote');
  $('#questions').innerHTML=Object.entries(QUESTIONS).map(([qid,Q])=>{
@@ -528,7 +538,8 @@ function renderDishes(){const dishes=DOC?DOC.dishes:{};const mine=NAME?(dishes[N
 $('#dishAdd').onclick=()=>{const v=$('#dishIn').value.trim();if(!v)return;if(!NAME){toast('Pick your name first');return;}persist({dishes:[...((DOC&&DOC.dishes[NAME])||[]),v]});$('#dishIn').value='';toast('Added');};
 $('#dishIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('#dishAdd').click();});
 
-function boot(){renderHouses();renderItin();renderExtras();checklist('pack','scv-pack',PACK,false);checklist('todoList','scv-todo',TODOS,true);renderVote();renderDishes();load();setInterval(load,25000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});spy();}
+function renderLists(){checklist('pack','pack',PACK,false);checklist('todoList','todos',TODOS,true);}
+function boot(){renderHouses();renderItin();renderExtras();renderLists();renderVote();renderDishes();load();setInterval(load,25000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});spy();}
 </script>
 <script>
 /* ═══════════ CONTENT (was content.js) ═══════════ */
@@ -539,32 +550,32 @@ const AB = id => `https://www.airbnb.com/rooms/${id}?check_in=2026-11-24&check_o
 
 /* ───────── House shortlist (from the Airbnb search on Oct 29; all available Nov 24–28, sleep 10) ───────── */
 HOUSES.mtn = [
-  { kind:'mtn', code:'Mtn A', id:'747299435140104977', name:'Cane Creek Cabin', area:'Fletcher, NC', drive:'1 hr 50', br:5, ba:3, rating:'4.93 (14)', total:3460, fc:false,
+  { kind:'mtn', code:'Mtn A', id:'747299435140104977', name:'Cane Creek Cabin', area:'Fletcher, NC', drive:'1 hr 50', br:5, ba:3, rating:'4.93 (14)', total:3460, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
     desc:'3,400 square feet, five king beds, a game room with foosball and air hockey, hot tub, fire pit. Between Asheville and Hendersonville.' },
-  { kind:'mtn', code:'Mtn B', id:'1066609093454799038', name:'1906 house in Asheville', area:'Asheville, NC', drive:'2 hr', br:5, ba:2, rating:'4.98 (82)', total:2955, fc:false,
+  { kind:'mtn', code:'Mtn B', id:'1066609093454799038', name:'1906 house in Asheville', area:'Asheville, NC', drive:'2 hr', br:5, ba:2, rating:'4.98 (82)', total:2955, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
     desc:'Old house in the middle of Asheville with a wrap-around porch and a seven-person hot tub. Walkable to downtown. Only two bathrooms.' },
-  { kind:'mtn', code:'Mtn C', id:'955775179253163287', name:'Modern house with lake access', area:'Brevard, NC', drive:'2 hr 20', br:5, ba:3.5, rating:'4.92 (26)', total:1578, fc:false,
+  { kind:'mtn', code:'Mtn C', id:'955775179253163287', name:'Modern house with lake access', area:'Brevard, NC', drive:'2 hr 20', br:5, ba:3.5, rating:'4.92 (26)', total:1578, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
     desc:'Newer build near Brevard with access to three lakes. The cheapest well-reviewed option on either list.' },
-  { kind:'mtn', code:'Mtn D', id:'868747285996010808', name:'Waterfront house with two kitchens', area:'Landrum, SC', drive:'1 hr 25', br:5, ba:3, rating:'4.94 (17)', total:1992, fc:false,
-    desc:'On the water in the foothills just over the SC line. Shortest drive of any house on the list and two kitchens for a big dinner.' },
-  { kind:'mtn', code:'Mtn E', id:'9509197', name:'Lakefront on Lake Lure', area:'Lake Lure, NC', drive:'1 hr 40', br:5, ba:2, rating:'4.74 (81)', total:2113, fc:true,
+  { kind:'mtn', code:'Mtn D', id:'868747285996010808', name:'Two kitchens and a fire pit', area:'Landrum, SC', drive:'1 hr 25', br:5, ba:3, rating:'4.94 (17)', total:1992, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
+    desc:'Big newer house in the foothills just over the SC line, five minutes from the Tryon equestrian center, with a fire pit and two kitchens. Shortest drive of any house on the list.' },
+  { kind:'mtn', code:'Mtn E', id:'9509197', name:'Lakefront on Lake Lure', area:'Lake Lure, NC', drive:'1 hr 40', br:5, ba:2, rating:'4.74 (81)', total:2113, fc:true, canc:'Free cancellation until Nov 10', cancc:'green',
     desc:'Right on Lake Lure with a dock and deck. Free cancellation. Only two bathrooms, and the reviews are a notch below the others.' },
-  { kind:'mtn', code:'Mtn F', id:'614321663989488925', name:'Triple Peak views', area:'Banner Elk, NC', drive:'2 hr 20', br:5, ba:3, rating:'4.87 (101)', total:3870, fc:false,
+  { kind:'mtn', code:'Mtn F', id:'614321663989488925', name:'Triple Peak views', area:'Banner Elk, NC', drive:'2 hr 20', br:5, ba:3, rating:'4.87 (101)', total:3870, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
     desc:'High Country house with long views, a hot tub and a wrap-around deck. Coldest option on the list; ten minutes from Tweetsie.' },
 ].map(h=>({...h, url:AB(h.id)}));
 
 HOUSES.bch = [
-  { kind:'bch', code:'Beach A', id:'50284700', name:'Waterfront with private pool', area:'Isle of Palms, SC', drive:'3 hr 45', br:5, ba:4.5, rating:'4.87 (30)', total:5644, fc:false,
+  { kind:'bch', code:'Beach A', id:'50284700', name:'Waterfront with private pool', area:'Isle of Palms, SC', drive:'3 hr 45', br:5, ba:4.5, rating:'4.87 (30)', total:5644, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
     desc:'On the water with a private pool and a big kitchen, twenty minutes from downtown Charleston. The most expensive house on the ballot.' },
-  { kind:'bch', code:'Beach B', id:'47703423', name:'Ocean and lighthouse views', area:'Folly Beach, SC', drive:'3 hr 40', br:5, ba:3.5, rating:'4.98 (146)', total:4553, fc:false,
-    desc:'Waterfront at the east end of Folly with views of the ocean and the Morris Island lighthouse. 146 reviews at 4.98.' },
-  { kind:'bch', code:'Beach C', id:'1176867815489267868', name:'Six bedrooms, five decks', area:'Carolina Beach, NC', drive:'3 hr 45', br:6, ba:4, rating:'4.92 (39)', total:2838, fc:true,
+  { kind:'bch', code:'Beach B', id:'47703423', name:'Ocean and lighthouse views', area:'Folly Beach, SC', drive:'3 hr 40', br:5, ba:3.5, rating:'4.98 (146)', total:4553, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
+    desc:'Across the street from the beach at the east end of Folly, with the ocean out front, the marsh out back and the Morris Island lighthouse in view. 146 reviews at 4.98.' },
+  { kind:'bch', code:'Beach C', id:'1176867815489267868', name:'Six bedrooms, five decks', area:'Carolina Beach, NC', drive:'3 hr 45', br:6, ba:4, rating:'4.92 (39)', total:2838, fc:true, canc:'Free cancellation until Nov 10', cancc:'green',
     desc:'Ocean views from five decks, six bedrooms, free cancellation. Twenty-five minutes from Wilmington and Enchanted Airlie.' },
-  { kind:'bch', code:'Beach D', id:'725991274847455646', name:'Beachfront with saltwater pool', area:'Ocean Isle Beach, NC', drive:'3 hr 30', br:5, ba:4.5, rating:'4.98 (50)', total:2430, fc:false,
-    desc:'On the sand with a private saltwater pool. Best-rated house under $2,500. Ocean Isle’s tree lighting and boat flotilla are that weekend.' },
-  { kind:'bch', code:'Beach E', id:'41291382', name:'Beachfront, unobstructed views', area:'Murrells Inlet, SC', drive:'3 hr 40', br:5, ba:3, rating:'4.98 (103)', total:2414, fc:false,
+  { kind:'bch', code:'Beach D', id:'725991274847455646', name:'Pool, elevator, one minute to the beach', area:'Ocean Isle Beach, NC', drive:'3 hr 30', br:5, ba:4.5, rating:'4.98 (50)', total:2430, fc:false, canc:'Non-refundable after 24 hours', cancc:'red',
+    desc:'Second row, about a one-minute walk to the sand, with a private saltwater pool, an elevator and wrap-around decks with ocean and marsh views. Best-rated house under $2,500.' },
+  { kind:'bch', code:'Beach E', id:'41291382', name:'Beachfront, unobstructed views', area:'Murrells Inlet, SC', drive:'3 hr 40', br:5, ba:3, rating:'4.98 (103)', total:2414, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
     desc:'Oceanfront in Garden City, ten minutes from Brookgreen Gardens for Nights of a Thousand Candles on Friday.' },
-  { kind:'bch', code:'Beach F', id:'563799656307352638', name:'Six bedrooms, pool, 90 seconds to the beach', area:'Pawleys Island, SC', drive:'3 hr 45', br:6, ba:4, rating:'4.95 (86)', total:2770, fc:false,
+  { kind:'bch', code:'Beach F', id:'563799656307352638', name:'Six bedrooms, pool, 90 seconds to the beach', area:'Pawleys Island, SC', drive:'3 hr 45', br:6, ba:4, rating:'4.95 (86)', total:2770, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
     desc:'A short walk to the beach with a private pool and a spare bedroom. Pawleys is the quietest of the beach towns.' },
 ].map(h=>({...h, url:AB(h.id)}));
 
@@ -581,13 +592,13 @@ QUESTIONS.house = { multi:true, title:'2. If we rent a house, which ones would y
     { id:'747299435140104977', grp:'Mountains', label:'Mtn A · Cane Creek Cabin, Fletcher', meta:'$3,460 · 5 BR / 3 BA · hot tub, game room · 1 hr 50' },
     { id:'1066609093454799038', grp:'Mountains', label:'Mtn B · 1906 house, Asheville', meta:'$2,955 · 5 BR / 2 BA · walkable, hot tub · 2 hr' },
     { id:'955775179253163287', grp:'Mountains', label:'Mtn C · Modern house, Brevard', meta:'$1,578 · 5 BR / 3.5 BA · lake access · 2 hr 20' },
-    { id:'868747285996010808', grp:'Mountains', label:'Mtn D · Waterfront house, Landrum SC', meta:'$1,992 · 5 BR / 3 BA · two kitchens · 1 hr 25' },
+    { id:'868747285996010808', grp:'Mountains', label:'Mtn D · Two kitchens and a fire pit, Landrum SC', meta:'$1,992 · 5 BR / 3 BA · 1 hr 25' },
     { id:'9509197', grp:'Mountains', label:'Mtn E · Lakefront, Lake Lure', meta:'$2,113 · 5 BR / 2 BA · dock · free cancellation · 1 hr 40' },
     { id:'614321663989488925', grp:'Mountains', label:'Mtn F · Triple Peak views, Banner Elk', meta:'$3,870 · 5 BR / 3 BA · hot tub · 2 hr 20' },
     { id:'50284700', grp:'Beach', label:'Beach A · Waterfront with pool, Isle of Palms', meta:'$5,644 · 5 BR / 4.5 BA · 3 hr 45' },
     { id:'47703423', grp:'Beach', label:'Beach B · Ocean and lighthouse views, Folly Beach', meta:'$4,553 · 5 BR / 3.5 BA · 3 hr 40' },
     { id:'1176867815489267868', grp:'Beach', label:'Beach C · Six bedrooms, five decks, Carolina Beach', meta:'$2,838 · 6 BR / 4 BA · free cancellation · 3 hr 45' },
-    { id:'725991274847455646', grp:'Beach', label:'Beach D · Beachfront with saltwater pool, Ocean Isle', meta:'$2,430 · 5 BR / 4.5 BA · 3 hr 30' },
+    { id:'725991274847455646', grp:'Beach', label:'Beach D · Pool and elevator, one minute to the beach, Ocean Isle', meta:'$2,430 · 5 BR / 4.5 BA · non-refundable · 3 hr 30' },
     { id:'41291382', grp:'Beach', label:'Beach E · Beachfront, Murrells Inlet', meta:'$2,414 · 5 BR / 3 BA · 3 hr 40' },
     { id:'563799656307352638', grp:'Beach', label:'Beach F · Six bedrooms with pool, Pawleys Island', meta:'$2,770 · 6 BR / 4 BA · 3 hr 45' },
   ] };
@@ -716,6 +727,14 @@ ITIN.bch = { note:'Assumes Option 3 wins. Written for the Brunswick or Grand Str
     ['Morning','Out by 10. Charlotte cars home by mid-afternoon. Virginia cars take US-74 to I-95; leave early, I-95 north of Richmond slows by 1 PM.'],
   ]},
  ]};
+
+/* ───────── Contacts ───────── */
+CONTACTS.push(
+  { n:'Cindy & Randy Shearer', r:'Hosts · Charlotte', addr:'14358 Nolen Ln, Charlotte, NC', em:'nshearc@aol.com' },
+  { n:'Ryan & Kristi', r:'Charlotte', em:'rjsnnc@gmail.com' },
+  { n:'Danielle & Edgar Garcia', r:'Manassas, VA', em:'daniellelshearer@gmail.com' },
+  { n:'Julia & James Reid', r:'Vienna, VA · site questions to James', em:'jamespreid@gmail.com' },
+);
 
 /* ───────── To-dos ───────── */
 const _d=(m,d)=>new Date(2026,m-1,d);
