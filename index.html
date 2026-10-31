@@ -180,6 +180,9 @@
   details.fold[open]>summary::before{content:'–'}
   details.fold>.in{padding:0 22px 22px}
   details.fold .box{border:0;padding:0;background:transparent}
+  .logos{display:inline-flex;gap:4px;align-items:center;vertical-align:-5px;margin-right:8px}
+  .logos img{width:22px;height:22px;object-fit:contain}
+  .logos i{font-style:normal;font-size:10px;color:var(--mute)}
   .showmore{font:inherit;font-size:14px;background:transparent;border:1px solid var(--ink);padding:10px 18px;cursor:pointer;margin-top:16px}
   .glance{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:14.5px;margin-top:10px}
   .glance b{font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:3px}
@@ -545,14 +548,16 @@ function renderItin(){if(!ITIN[ITIN_KEY])ITIN_KEY='clt';const it=ITIN[ITIN_KEY];
  $('#days').innerHTML=it.days.map(d=>`<div class="day"><div class="dh"><div class="kicker">${esc(d.date)}</div><h3>${d.title}</h3>${d.sub?`<div style="font-size:13.5px;color:var(--mute);margin-top:6px">${d.sub}</div>`:''}</div><div>${d.rows.map(([k,v])=>`<div class="row"><b>${esc(k)}</b><div>${v}</div></div>`).join('')}</div></div>`).join('');}
 
 /* ───────────── dinner / things / sports / tips ───────────── */
+const LG={nfl:a=>`https://a.espncdn.com/i/teamlogos/nfl/500/${a}.png`,nba:a=>`https://a.espncdn.com/i/teamlogos/nba/500/${a}.png`,ncaa:a=>`https://a.espncdn.com/i/teamlogos/ncaa/500/${a}.png`};
+function logos(l){if(!l)return'';const [lg,a,b]=l;const im=x=>`<img src="${LG[lg](x)}" alt="" loading="lazy" onerror="this.remove()">`;return `<span class="logos">${im(a)}<i>at</i>${im(b)}</span>`;}
 let THINGS_ALL=false;$('#thingsMore').onclick=()=>{THINGS_ALL=!THINGS_ALL;renderExtras();if(!THINGS_ALL)$('#more').scrollIntoView({behavior:'smooth'});};
 function renderExtras(){
  $('#dinnerOpts').innerHTML=DINNER.map(d=>`<div class="box"><span class="tag ${d.tagc||''}">${esc(d.tag)}</span><h3 style="margin-top:10px">${d.title}</h3><p style="font-size:14.5px;color:var(--ink2)">${d.body}</p>${d.items?`<ul style="margin:0;padding-left:18px;font-size:14px">${d.items.map(i=>`<li>${i}</li>`).join('')}</ul>`:''}</div>`).join('');
  const TN=THINGS_ALL?THINGS.length:6;$('#thingsMore').textContent=THINGS_ALL?'Show fewer':`Show all ${THINGS.length} places`;$('#thingsMore').style.display=THINGS.length>6?'':'none';
  $('#things').innerHTML=THINGS.slice(0,TN).map(t=>`<div class="thing"><span class="tag ${t.tagc||''}">${esc(t.tag)}</span><h4>${t.url?`<a href="${esc(t.url)}" target="_blank" rel="noopener">${esc(t.name)} ↗</a>`:esc(t.name)}</h4><div class="m">${esc(t.meta||'')}</div><p>${t.body}</p></div>`).join('');
- $('#nfl').innerHTML=NFL.map(g=>`<div class="row"><b>${esc(g.time)}</b><div><strong>${esc(g.game)}</strong> <span style="color:var(--mute)">· ${esc(g.net)}</span></div></div>`).join('');
- $('#local').innerHTML=LOCAL.map(g=>`<div class="row"><b>${esc(g.when)}</b><div><strong>${g.what}</strong>${g.note?`<div style="font-size:13.5px;color:var(--mute)">${g.note}</div>`:''}</div></div>`).join('');
- $('#contactList').innerHTML=CONTACTS.map(c=>`<div><strong>${esc(c.n)}</strong><div style="color:var(--mute);font-size:13.5px">${esc(c.r)}</div>${c.addr?`<div><a href="https://www.google.com/maps/search/${encodeURIComponent(c.addr)}" target="_blank" rel="noopener">${esc(c.addr)}</a></div>`:''}${c.tel?`<div><a href="tel:${esc(c.tel.replace(/[^+\d]/g,''))}">${esc(c.tel)}</a></div>`:''}${c.em?`<div><a href="mailto:${esc(c.em)}">${esc(c.em)}</a></div>`:''}</div>`).join('');
+ $('#nfl').innerHTML=NFL.map(g=>`<div class="row"><b>${esc(g.time)}</b><div>${logos(g.l)}<strong>${esc(g.game)}</strong> <span style="color:var(--mute)">· ${esc(g.net)}</span></div></div>`).join('');
+ $('#local').innerHTML=LOCAL.map(g=>`<div class="row"><b>${esc(g.when)}</b><div>${logos(g.l)}<strong>${g.what}</strong>${g.note?`<div style="font-size:13.5px;color:var(--mute)">${g.note}</div>`:''}</div></div>`).join('');
+ $('#contactList').innerHTML=CONTACTS.map(c=>`<div><strong>${esc(c.n)}</strong><div style="color:var(--mute);font-size:13.5px">${esc(c.r)}</div>${c.addr?`<div><a href="https://www.google.com/maps/search/${encodeURIComponent(c.addr)}" target="_blank" rel="noopener">${esc(c.addr)}</a></div>`:''}${c.tel?`<div><a href="tel:${esc(c.tel.replace(/[^+\d]/g,''))}">${esc(c.tel)}</a></div>`:''}${c.em?`<div><a href="mailto:${esc(c.em)}">${esc(c.em)}</a></div>`:''}${c.em2?`<div><a href="mailto:${esc(c.em2)}">${esc(c.em2)}</a></div>`:''}</div>`).join('');
  $('#tips').innerHTML=TIPS.map(t=>`<div class="box"><h3 style="font-size:20px">${esc(t.h)}</h3><p style="font-size:14.5px;margin:8px 0 0">${t.p}</p></div>`).join('');
 }
 
@@ -788,8 +793,8 @@ ITIN.bch = { note:'Assumes Option 3 wins. Written for the Brunswick or Grand Str
 
 /* ───────── Contacts ───────── */
 CONTACTS.push(
-  { n:'Cindy & Randy Shearer', r:'Hosts · Charlotte', addr:'14358 Nolen Ln, Charlotte, NC', em:'nshearc@aol.com' },
-  { n:'Ryan & Kristi', r:'Charlotte', addr:'1328 East Woodlawn Rd, Charlotte, NC', em:'rjsnnc@gmail.com' },
+  { n:'Cindy & Randy Shearer', r:'Hosts · Charlotte', addr:'14358 Nolen Ln, Charlotte, NC', em:'nshearc@aol.com', em2:'rjsnnc@gmail.com' },
+  { n:'Ryan & Kristi', r:'Charlotte', addr:'1328 East Woodlawn Rd, Charlotte, NC', em:'rjs3806@yahoo.com' },
   { n:'Danielle & Edgar Garcia', r:'Manassas, VA', em:'daniellelshearer@gmail.com' },
   { n:'Julia & James Reid', r:'Vienna, VA · site questions to James', em:'jamespreid@gmail.com' },
 );
@@ -833,23 +838,23 @@ THINGS.push(
   { tag:'Easy', name:'Mint Museum, free Wednesday nights', url:'https://www.mintmuseum.org/plan-your-visit/', meta:'Wed 5–9 PM free · 18 and under free', body:'Uptown, a block from the parade route. Closed Thanksgiving Day.' },
 );
 NFL.push(
-  { time:'Wed 8:00 PM', game:'Packers at Rams', net:'Netflix' },
-  { time:'Thu 1:00 PM', game:'Bears at Lions', net:'CBS' },
-  { time:'Thu 4:30 PM', game:'Eagles at Cowboys', net:'FOX' },
-  { time:'Thu 8:20 PM', game:'Chiefs at Bills', net:'NBC' },
+  { time:'Wed 8:00 PM', l:['nfl','gb','lar'], game:'Packers at Rams', net:'Netflix' },
+  { time:'Thu 1:00 PM', l:['nfl','chi','det'], game:'Bears at Lions', net:'CBS' },
+  { time:'Thu 4:30 PM', l:['nfl','phi','dal'], game:'Eagles at Cowboys', net:'FOX' },
+  { time:'Thu 8:20 PM', l:['nfl','kc','buf'], game:'Chiefs at Bills', net:'NBC' },
 );
 LOCAL.push(
-  { when:'Thu Nov 26', what:'Bears at Lions, 1 PM, CBS', note:'Kickoff is exactly when lunch is. Plan on the game being on in the next room; the Bears contingent will drift.' },
-  { when:'Tue 24 & Thu 26', what:'DePaul in the Fort Myers Tip-Off', note:'Purdue on Tuesday night, Pitt on Thanksgiving Day. Tip times and TV to be announced; the event usually lands on FS1 or CBS Sports Network.' },
-  { when:'Wed Nov 25', what:'Hornets vs. Bulls, 7 PM', note:'Spectrum Center, and on Channel 9 (WSOC) or TV64 locally. Bears people and Hornets people in the same room for this one. Nobody is going; it is on at the house.' },
-  { when:'Sat Nov 28', what:'Hornets vs. Nets, 6 PM', note:'Also at home and on WSOC/TV64. Early tip, so it overlaps the rivalry games.' },
-  { when:'Sat Nov 28', what:'Tennessee at Vanderbilt', note:'Nashville, in the 6–8 PM window; exact kickoff and network come about 12 days out. The Virginia cars will be home by then, so this one lives in the group chat.' },
-  { when:'Sat Nov 28', what:'UTEP at Northern Illinois', note:'Season finale at Huskie Stadium in DeKalb, NIU’s first year in the Mountain West. Time and TV not set yet.' },
-  { when:'Sun Nov 29', what:'Titans at Jaguars, 4:05 PM, CBS', note:'The Sunday after, in Jacksonville: the second Titans–Jaguars game in three weeks. Everyone is home by then, so pick a side in the group chat.' },
-  { when:'Panthers', what:'No home game our week', note:'Home vs. Ravens Sun Nov 22, before we arrive; Monday night at Tampa Bay Nov 30, after we leave.' },
-  { when:'Sat Nov 28', what:'NC State at North Carolina', note:'Kenan Stadium, Chapel Hill. Kickoff and TV not set yet; the ACC announces about 12 days out, so around Nov 16.' },
-  { when:'Sat Nov 28', what:'Virginia at Virginia Tech', note:'Commonwealth Cup at Lane Stadium. Same deal: time and network come around Nov 16.' },
-  { when:'Sat Nov 28', what:'South Carolina at Clemson', note:'The Palmetto Bowl in Clemson, 2½ hours from Charlotte. Time TBA.' },
+  { when:'Thu Nov 26', l:['nfl','chi','det'], what:'Bears at Lions, 1 PM, CBS', note:'Kickoff is exactly when lunch is. Plan on the game being on in the next room; the Bears contingent will drift.' },
+  { when:'Tue 24 & Thu 26', l:['ncaa','305','2509'], what:'DePaul in the Fort Myers Tip-Off', note:'Purdue on Tuesday night, Pitt on Thanksgiving Day. Tip times and TV to be announced; the event usually lands on FS1 or CBS Sports Network.' },
+  { when:'Wed Nov 25', l:['nba','chi','cha'], what:'Hornets vs. Bulls, 7 PM', note:'Spectrum Center, and on Channel 9 (WSOC) or TV64 locally. Bears people and Hornets people in the same room for this one. Nobody is going; it is on at the house.' },
+  { when:'Sat Nov 28', l:['nba','bkn','cha'], what:'Hornets vs. Nets, 6 PM', note:'Also at home and on WSOC/TV64. Early tip, so it overlaps the rivalry games.' },
+  { when:'Sat Nov 28', l:['ncaa','2633','238'], what:'Tennessee at Vanderbilt', note:'Nashville, in the 6–8 PM window; exact kickoff and network come about 12 days out. The Virginia cars will be home by then, so this one lives in the group chat.' },
+  { when:'Sat Nov 28', l:['ncaa','2638','2459'], what:'UTEP at Northern Illinois', note:'Season finale at Huskie Stadium in DeKalb, NIU’s first year in the Mountain West. Time and TV not set yet.' },
+  { when:'Sun Nov 29', l:['nfl','ten','jax'], what:'Titans at Jaguars, 4:05 PM, CBS', note:'The Sunday after, in Jacksonville: the second Titans–Jaguars game in three weeks. Everyone is home by then, so pick a side in the group chat.' },
+  { when:'Panthers', l:['nfl','bal','car'], what:'No home game our week', note:'Home vs. Ravens Sun Nov 22, before we arrive; Monday night at Tampa Bay Nov 30, after we leave.' },
+  { when:'Sat Nov 28', l:['ncaa','152','153'], what:'NC State at North Carolina', note:'Kenan Stadium, Chapel Hill. Kickoff and TV not set yet; the ACC announces about 12 days out, so around Nov 16.' },
+  { when:'Sat Nov 28', l:['ncaa','258','259'], what:'Virginia at Virginia Tech', note:'Commonwealth Cup at Lane Stadium. Same deal: time and network come around Nov 16.' },
+  { when:'Sat Nov 28', l:['ncaa','2579','228'], what:'South Carolina at Clemson', note:'The Palmetto Bowl in Clemson, 2½ hours from Charlotte. Time TBA.' },
 );
 TIPS.push(
   { h:'Weather', p:'Late November in Charlotte averages 60° by day and 41° at night, with about a one-in-five chance of rain on any day. The mountains run ten degrees colder; the coast a few degrees warmer. Sunrise 7:10, sunset 5:12.' },
