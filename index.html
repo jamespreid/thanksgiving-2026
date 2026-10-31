@@ -84,32 +84,6 @@
   .vbreak .num{color:rgba(255,255,255,.7)}
   .vbreak h2{font-size:clamp(36px,5.5vw,72px);font-weight:300;margin:6px 0 0}
   .vbreak p{color:rgba(255,255,255,.8);max-width:520px;margin:12px 0 0}
-  /* option cards */
-  .opt{background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column}
-  .opt .top{padding:22px 24px 0}
-  .opt .body{padding:14px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1}
-  .opt h3{font-size:28px}
-  .opt .sub{color:var(--mute);font-size:14px;margin-top:4px}
-  .kv{display:grid;grid-template-columns:92px 1fr;gap:6px 12px;font-size:14.5px;border-top:1px solid var(--line);padding-top:12px}
-  .kv b{font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:3px}
-  .opt ul{margin:0;padding-left:18px;font-size:14.5px}
-  /* house cards */
-  .house{background:var(--paper);border:1px solid var(--line);padding:0 0 18px;display:grid;grid-template-columns:1fr auto;gap:6px 16px}
-  .house .ph{grid-column:1/-1;aspect-ratio:16/9;overflow:hidden;background:var(--bg2);margin-bottom:10px}
-  .house .ph img{width:100%;height:100%;object-fit:cover;display:block}
-  .house>*:not(.ph){margin-left:20px}.house>.price{margin-right:20px}.house>.meta,.house>.d,.house>.act{margin-right:20px}
-  .house .t{font-family:Fraunces,serif;font-size:20px;line-height:1.2}
-  .house .t a{color:inherit;text-decoration:none}
-  .house .price{font-family:Fraunces,serif;font-size:22px;text-align:right;white-space:nowrap}
-  .house .price small{display:block;font-family:Inter;font-size:12px;color:var(--mute)}
-  .house .meta{grid-column:1/-1;font-size:13.5px;color:var(--mute)}
-  .house .d{grid-column:1/-1;font-size:14.5px}
-  .house .act{grid-column:1/-1;display:flex;gap:14px;font-size:14px;margin-top:4px}
-  /* itinerary toggle */
-  .seg{display:inline-flex;border:1px solid var(--ink);margin-bottom:26px}
-  .seg button{font:inherit;font-size:14.5px;font-weight:500;padding:11px 20px;background:transparent;border:0;cursor:pointer;color:var(--ink);border-right:1px solid var(--ink)}
-  .seg button:last-child{border-right:0}
-  .seg button.on{background:var(--ink);color:#fff}
   .itin-note{font-size:14.5px;color:var(--ink2);background:var(--paper);border-left:3px solid var(--copper);padding:12px 16px;margin-bottom:22px}
   .day{border-top:1px solid var(--ink);padding:22px 0 26px;display:grid;grid-template-columns:200px 1fr;gap:12px 32px}
   @media(max-width:700px){.day{grid-template-columns:1fr}}
@@ -164,14 +138,6 @@
   footer{padding:40px 0 60px;color:var(--mute);font-size:13.5px;border-top:1px solid var(--line)}
   .note{background:var(--paper);border-left:3px solid var(--green);padding:14px 18px;font-size:15px}
   .hidden{display:none!important}
-  /* scenario switch + folds */
-  .scen{display:inline-flex;border:1px solid var(--ink);border-radius:999px;overflow:hidden;flex:none}
-  .scen button{font:inherit;font-size:12.5px;font-weight:500;padding:4px 11px;background:transparent;border:0;cursor:pointer;color:var(--ink);white-space:nowrap}
-  .scen button.on{background:var(--ink);color:#fff}
-  .chips .scen{margin-right:12px}
-  .opt{cursor:pointer;transition:opacity .2s}
-  .opt.dim{opacity:.6}.opt.dim .body{display:none}.opt.dim .top{padding-bottom:20px}
-  .opt.pick{outline:2px solid var(--ink);outline-offset:-1px;cursor:default;opacity:1}
   details.fold{background:var(--paper);border:1px solid var(--line);margin-top:14px}
   details.fold>summary{list-style:none;cursor:pointer;padding:16px 22px;display:flex;align-items:center;gap:12px;font-family:Fraunces,serif;font-size:19px}
   details.fold>summary::-webkit-details-marker{display:none}
@@ -207,11 +173,11 @@
   <div class="wrap">
     <a class="brand" href="#top">Thanksgiving ’26 <small>Charlotte · Nov 24–28</small></a>
     <div class="links" id="links">
-      <a href="#plan" data-part="plan"><b>01</b>The plan</a><a href="#stay" data-part="stay"><b>02</b>Where we stay</a><a href="#itinerary" data-part="week"><b>03</b>The week</a><a href="#more" data-part="more"><b>04</b>More</a>
+      <a href="#plan" data-part="plan"><b>01</b>The plan</a><a href="#itinerary" data-part="week"><b>02</b>The week</a><a href="#more" data-part="more"><b>03</b>More</a>
     </div>
   </div>
 </div>
-<div class="chips"><div class="wrap"><div class="scen" title="Flip the whole page between the three versions of the week"><button data-scen="clt">Charlotte</button><button data-scen="mtn">Mountains</button><button data-scen="bch">Beach</button></div><div id="chips" style="display:flex;gap:4px;align-items:center;overflow-x:auto;scrollbar-width:none"></div></div></div>
+<div class="chips"><div class="wrap" id="chips"></div></div>
 
 <header class="hero">
   <video autoplay muted loop playsinline preload="auto" poster="https://images.pexels.com/videos/33464075/4k-drone-33464075.jpeg?auto=compress&cs=tinysrgb&w=1600" id="heroVid">
@@ -223,8 +189,8 @@
   <div class="wrap">
     <div class="meta"><span><b>Tue Nov 24 – Sat Nov 28</b></span><span><b id="heroDays">—</b> days away</span><span><b>10</b> of us</span><span><b>Vote closes Nov 4</b></span></div>
     <h1>Thanksgiving in <em>Charlotte</em></h1>
-    <p class="sub">Everyone drives to Charlotte this year. One vote decides whether we stay put or add a few nights in the mountains or at the beach.</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn light" href="#vote">Vote now</a><a class="btn outline" href="#stay">See the house options</a></div>
+    <p class="sub">Everyone drives to Charlotte this year. Home base is Cindy and Randy’s on Nolen Lane; the vote is about the meal, the outings, and who arrives when.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn light" href="#vote">Vote now</a><a class="btn outline" href="#itinerary">See the week</a></div>
   </div>
 </header>
 <div class="strip"><div class="wrap">
@@ -240,15 +206,15 @@
   <div class="wrap">
     <div class="num">01</div>
     <h2>The plan</h2>
-    <p class="lede">Tuesday is a normal work day; the Virginia households drive down Tuesday evening or Wednesday morning. Thanksgiving is a late lunch around 1 on Thursday. The one open question, whether the week is all Charlotte or includes a mountain or beach house, is on <a href="#vote">the ballot</a>, which closes Wednesday, November 4.</p>
+    <p class="lede">Tuesday is a normal work day; the Virginia households drive down Tuesday evening or Wednesday morning. Everyone sleeps at Cindy and Randy’s on Nolen Lane except Ryan and Kristi, who are twenty minutes away at their own place. Thanksgiving is a late lunch around 1 on Thursday. What is left to decide (how we do the meal, which outings, who arrives when) is on <a href="#vote">the ballot</a>, which closes Wednesday, November 4.</p>
     <div class="grid g2">
       <div class="box">
         <div class="kicker">At a glance</div>
         <div class="glance">
           <b>Dates</b><span>Tuesday Nov 24 (late) or Wednesday Nov 25, through Saturday Nov 28</span>
           <b>Base</b><span>Cindy &amp; Randy’s on Nolen Lane; everyone has a bed there</span>
-          <b>Vote</b><span>Closes Wed Nov 4: where we stay, which house, how we do the meal, what to go to</span>
-          <b>This page</b><span>Use the <strong>Charlotte / Mountains / Beach</strong> switch at the top to see only the version of the week you care about</span>
+          <b>Vote</b><span>Closes Wed Nov 4: how we do Thanksgiving lunch, which outings, arrival day</span>
+          <b>Booking</b><span>Nothing, apart from Turkey Trot entries and lights tickets</span>
         </div>
       </div>
       <div class="box">
@@ -281,97 +247,28 @@
           <li><strong>US-29:</strong> Charlottesville at 2 hours (Bodo’s Bagels, UVA Lawn for a run-around); Lynchburg at 3 hours; Danville at 4½ hours is the last stop before I-85.</li>
         </ul>
         <div class="kicker" style="margin-top:18px">Bring</div>
-        <p style="font-size:14.5px;margin:8px 0 0" data-only="clt">Car seats and sound machines. Nolen Lane has the pack-and-play and stroller covered.</p>
-        <p style="font-size:14.5px;margin:8px 0 0" data-only="mtn bch">Car seats, sound machines, and the pack-and-play and stroller, since the house will not have them.</p>
+        <p style="font-size:14.5px;margin:8px 0 0">Car seats and sound machines. Nolen Lane has the pack-and-play and stroller covered.</p>
       </div>
       </div>
     </details>
   </div>
 </section>
 
-<!-- ───────── VIDEO BREAK: mountains ───────── -->
-<div class="vbreak">
-  <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/4165966/4k-beauty-mountains-nature-4165966.jpeg?auto=compress&cs=tinysrgb&w=1600">
-    <source src="media/break-mountains%20(1).mp4" type="video/mp4">
-    <source src="media/break-mountains.mp4" type="video/mp4">
-    <source src="break-mountains.mp4" type="video/mp4">
-    <source src="https://videos.pexels.com/video-files/4165966/4165966-hd_1280_720_60fps.mp4" type="video/mp4">
-  </video>
-  <div class="shade"></div>
-  <div class="wrap"><div class="num">02</div><h2>Where we stay</h2><p>Three ways to run the week. Every version starts and ends in Charlotte.</p></div>
-</div>
-
-<!-- ───────── STAY ───────── -->
-<section id="stay">
-  <div class="wrap">
-    <div class="seg"><button data-scen="clt">Charlotte all week</button><button data-scen="mtn">A mountain house</button><button data-scen="bch">A beach house</button></div>
-    <div class="grid g3" id="opts">
-      <div class="opt" data-opt="clt">
-        <div class="top"><span class="tag">Option 1</span><h3 style="margin-top:10px">Charlotte all week</h3><div class="sub">Cindy &amp; Randy’s house on Nolen Lane is home base. Ryan and Kristi stay at their own place.</div></div>
-        <div class="body">
-          <div class="kv"><b>Cost</b><span>Groceries and a night or two out</span><b>Driving</b><span>None once we arrive</span><b>Good for</b><span>The kids’ routine, a real kitchen, no packing twice</span></div>
-          <ul><li>Wednesday-night parade uptown, Turkey Trot Thursday, Speedway Christmas any night</li><li>Everyone has a bed, a yard and a familiar kitchen</li><li>Nothing to book</li></ul>
-        </div>
-      </div>
-      <div class="opt" data-opt="mtn">
-        <div class="top"><span class="tag copper">Option 2</span><h3 style="margin-top:10px">A mountain house</h3><div class="sub">Asheville, Hendersonville, Lake Lure or the High Country. 1½ to 2½ hours from Charlotte.</div></div>
-        <div class="body">
-          <div class="kv"><b>Cost</b><span>$1,600–3,900 for four nights on the shortlist, split four ways</span><b>Driving</b><span>1½–2½ hours each way</span><b>Good for</b><span>Fireplace and hot tub weather, everyone under one roof</span></div>
-          <ul><li>Biltmore and Tweetsie are already decorated for Christmas</li><li>Highs in the 50s, lows in the 30s; a chance of snow at Beech Mountain</li><li>Cell service is thin at a lot of these</li></ul>
-        </div>
-      </div>
-      <div class="opt" data-opt="bch">
-        <div class="top"><span class="tag sea">Option 3</span><h3 style="margin-top:10px">A beach house</h3><div class="sub">Ocean Isle, Carolina Beach, Pawleys or the Charleston islands. 3½ to 4 hours from Charlotte.</div></div>
-        <div class="body">
-          <div class="kv"><b>Cost</b><span>$2,400–5,600 for four nights on the shortlist, split four ways</span><b>Driving</b><span>3½–4 hours each way</span><b>Good for</b><span>Mid-60s and sunny, empty beaches, off-season prices</span></div>
-          <ul><li>Brookgreen Gardens’ Nights of a Thousand Candles starts Friday; Enchanted Airlie in Wilmington too</li><li>Water is 60° so the pools are for looking at</li><li>Longest drive, and most beach towns are quiet in November</li></ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="note" style="margin:26px 0 0"><strong>A split week is also on the ballot:</strong> Thanksgiving lunch in Charlotte on Thursday, then Friday and Saturday nights at a house. It is the shortest booking and the most driving.</div>
-
-    <div id="houses" style="scroll-margin-top:104px;margin-top:34px">
-      <div data-only="clt" class="note" style="border-left-color:var(--copper)">Staying in Charlotte means there is nothing to book. Switch to <a href="#houses" data-go="mtn">Mountains</a> or <a href="#houses" data-go="bch">Beach</a> to see the six houses on each shortlist.</div>
-      <div data-only="mtn">
-        <div class="kicker" style="margin-bottom:4px">Mountain shortlist · 6 houses</div>
-        <p style="font-size:14.5px;color:var(--mute);margin-bottom:14px">Pulled from Airbnb on Oct 29 for Nov 24–28, 8 adults and 2 kids, so every one of these is available on our dates and sleeps 10. Totals include Airbnb’s fees. The full list of 75 is in <a href="https://docs.google.com/spreadsheets/d/1T4Ifz5WJcnUI3UqJMsfFqeEtp-3msQ0m4lG4rC_eIyc/edit?usp=sharing" target="_blank" rel="noopener">the spreadsheet</a>.</p>
-        <div class="grid g2" id="mtnHouses"></div>
-      </div>
-      <div data-only="bch">
-        <div class="kicker" style="margin-bottom:4px">Beach shortlist · 6 houses</div>
-        <p style="font-size:14.5px;color:var(--mute);margin-bottom:14px">Pulled from Airbnb on Oct 29 for Nov 24–28, 8 adults and 2 kids, so every one of these is available on our dates and sleeps 10. Totals include Airbnb’s fees; prices run lower than the mountains because the coast is off-season. “Partial refund” is Airbnb’s strict policy, usually 50% back if you cancel a week or more before check-in. The full list of 75 is in <a href="https://docs.google.com/spreadsheets/d/1T4Ifz5WJcnUI3UqJMsfFqeEtp-3msQ0m4lG4rC_eIyc/edit?usp=sharing" target="_blank" rel="noopener">the spreadsheet</a>.</p>
-        <div class="grid g2" id="bchHouses"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────── VIDEO BREAK: beach ───────── -->
-<div class="vbreak">
-  <video autoplay muted loop playsinline preload="metadata" poster="https://images.pexels.com/videos/35445298/pexels-photo-35445298.jpeg?auto=compress&cs=tinysrgb&w=1600">
-    <source src="media/break-beach%20(1).mp4" type="video/mp4">
-    <source src="media/break-beach.mp4" type="video/mp4">
-    <source src="break-beach.mp4" type="video/mp4">
-    <source src="https://videos.pexels.com/video-files/35445298/15017142_1920_1080_60fps.mp4" type="video/mp4">
-  </video>
-  <div class="shade"></div>
-  <div class="wrap"><div class="num">03</div><h2>The week</h2><p>One itinerary for each way the vote could go; you see one at a time. Tuesday and Saturday are the same in all of them.</p></div>
-</div>
-
 <!-- ───────── ITINERARY ───────── -->
-<section id="itinerary">
+<section id="itinerary" style="background:var(--bg2);border-top:1px solid var(--line)">
   <div class="wrap">
-    <div class="seg"><button data-scen="clt">If we stay in Charlotte</button><button data-scen="mtn">If we go to the mountains</button><button data-scen="bch">If we go to the beach</button></div>
+    <div class="num">02</div>
+    <h2>The week</h2>
+    <p class="lede">Day by day, Tuesday to Saturday. Nothing is mandatory; it is the menu of what is on and when.</p>
     <div class="itin-note" id="itinNote"></div>
     <div id="days"></div>
   </div>
 </section>
 
 <!-- ───────── VOTE ───────── -->
-<section id="vote" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+<section id="vote">
   <div class="wrap">
-    <div class="num">04</div>
+    <div class="num">03</div>
     <h2>The ballot</h2>
     <p class="lede">Pick your name, then tap your answers. Votes save to a shared tally that everyone can see, and you can change yours until the ballot closes on Wednesday, November 4. Emma and David vote by proxy.</p>
     <div class="box" style="margin-bottom:18px">
@@ -391,7 +288,7 @@
     <source src="https://videos.pexels.com/video-files/5848366/5848366-hd_1920_1080_24fps.mp4" type="video/mp4">
   </video>
   <div class="shade"></div>
-  <div class="wrap"><div class="num">05</div><h2>The meal</h2><p>Thanksgiving is a late lunch around 1. Cook, order ahead, or go out; the ballot decides.</p></div>
+  <div class="wrap"><div class="num">04</div><h2>The meal</h2><p>Thanksgiving is a late lunch around 1. Cook, order ahead, or go out; the ballot decides.</p></div>
 </div>
 
 <!-- ───────── DINNER ───────── -->
@@ -422,7 +319,7 @@
 <!-- ───────── TO-DOS ───────── -->
 <section id="todo" style="padding-top:0">
   <div class="wrap">
-    <div class="num">06</div>
+    <div class="num">05</div>
     <h2>To-dos and deadlines</h2>
     <p class="lede">Check things off as they get done. Ticks are shared, so everyone sees the same list. Day counts update themselves.</p>
     <div class="box" id="todoList"></div>
@@ -432,7 +329,7 @@
 <!-- ───────── MORE ───────── -->
 <section id="more" style="background:var(--bg2);border-top:1px solid var(--line)">
   <div class="wrap">
-    <div class="num">07</div>
+    <div class="num">06</div>
     <h2>Around Charlotte</h2>
     <p class="lede">What is on that week, what is closed, and what the kids will like. Most of it is within 30 minutes of Nolen Lane.</p>
     <div class="grid g3" id="things"></div>
@@ -469,7 +366,7 @@
   </div>
 </section>
 
-<footer><div class="wrap">Thanksgiving 2026 · a family planning page. House prices and event dates were checked Oct 29 and can change; the links are the source of truth. Questions to Cindy, site fixes to James.</div></footer>
+<footer><div class="wrap">Thanksgiving 2026 · a family planning page. Event dates and prices were checked Oct 29 and can change; the links are the source of truth. Questions to Cindy, site fixes to James.</div></footer>
 
 <script>
 /* ───────────── settings ───────────── */
@@ -478,7 +375,6 @@ const TRAVELERS = ['Cindy','Randy','Danielle','Edgar','Ryan','Kristi','Julia','J
 const POLL_KEY = 'scv-tg2026-charlotte-q7m2w9';
 const VOTING_OPEN = true;
 const PASSWORDS = ['gobblelotte'];
-const HOUSES = window.HOUSES = { mtn:[], bch:[] };
 const ITIN = window.ITIN = {};
 const QUESTIONS = window.QUESTIONS = {};
 const DINNER = window.DINNER = [];
@@ -509,10 +405,9 @@ $$('video').forEach(v=>{v.muted=true;const go=()=>v.play().catch(()=>{});go();v.
 
 /* ───────────── nav ───────────── */
 const PARTS={plan:{label:'The plan',chips:[['#plan','Overview'],['#drive','The drive']]},
- stay:{label:'Where we stay',chips:[['#stay','Options'],['#houses','The houses']]},
  week:{label:'The week',chips:[['#itinerary','Itinerary'],['#vote','Vote'],['#dinner','The meal'],['#todo','To-dos']]},
  more:{label:'More',chips:[['#more','Around Charlotte'],['#sports','Sports'],['#packing','Packing & tips'],['#contacts','Contacts'],['#pets','Pets']]}};
-const PART_OF={plan:'plan',drive:'plan',stay:'stay',houses:'stay',itinerary:'week',vote:'week',dinner:'week',todo:'week',more:'more',sports:'more',packing:'more',contacts:'more',pets:'more'};
+const PART_OF={plan:'plan',drive:'plan',itinerary:'week',vote:'week',dinner:'week',todo:'week',more:'more',sports:'more',packing:'more',contacts:'more',pets:'more'};
 const ANCHORS=Object.keys(PART_OF);
 function spy(){const y=window.scrollY+110;let cur='';ANCHORS.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top+window.scrollY<=y)cur=id;});
  const part=PART_OF[cur]||'';$$('#links a').forEach(a=>a.classList.toggle('on',a.dataset.part===part));
@@ -521,30 +416,10 @@ function spy(){const y=window.scrollY+110;let cur='';ANCHORS.forEach(id=>{const 
 }
 window.addEventListener('scroll',spy,{passive:true});
 
-/* ───────────── houses ───────────── */
-function houseCard(h){return `<div class="house">
-  <a class="ph" href="${esc(h.url)}" target="_blank" rel="noopener"><img src="media/houses/${h.id}.jpg" alt="" loading="lazy" onerror="this.parentElement.style.display='none'"></a>
-  <div><span class="tag ${h.kind==='mtn'?'copper':'sea'}">${esc(h.code)}</span> <span class="tag ${h.cancc||''}">${esc(h.canc||'Cancellation: see listing')}</span><div class="t" style="margin-top:6px"><a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.name)}</a></div></div>
-  <div class="price">$${h.total.toLocaleString()}<small>4 nights · $${Math.round(h.total/4).toLocaleString()} per household</small></div>
-  <div class="meta">${esc(h.area)} · ${h.drive} from Charlotte · ${h.br} BR / ${h.ba} BA · ${h.rating?esc(h.rating):'new listing'}</div>
-  <div class="d">${h.desc}</div>
-  <div class="act"><a href="${esc(h.url)}" target="_blank" rel="noopener">Airbnb listing ↗</a><a href="https://www.google.com/maps/search/${encodeURIComponent(h.area)}" target="_blank" rel="noopener">Map ↗</a></div>
-</div>`;}
-function renderHouses(){$('#mtnHouses').innerHTML=HOUSES.mtn.map(houseCard).join('');$('#bchHouses').innerHTML=HOUSES.bch.map(houseCard).join('');}
-
 /* ───────────── itinerary ───────────── */
-let ITIN_KEY=ls.get('scv-itin','clt');
-function applyScen(){if(!ITIN[ITIN_KEY])ITIN_KEY='clt';const k=ITIN_KEY;document.body.dataset.scen=k;
- $$('[data-scen]').forEach(b=>b.classList.toggle('on',b.dataset.scen===k));
- $$('[data-only]').forEach(el=>el.classList.toggle('hidden',!el.dataset.only.split(' ').includes(k)));
- $$('.opt[data-opt]').forEach(o=>{o.classList.toggle('pick',o.dataset.opt===k);o.classList.toggle('dim',o.dataset.opt!==k);});}
-function setScen(k,scrollTo){if(!ITIN[k])return;ITIN_KEY=k;ls.set('scv-itin',k);applyScen();renderItin();if(scrollTo){const t=document.getElementById(scrollTo);if(t)t.scrollIntoView({behavior:'smooth'});}}
-$$('[data-scen]').forEach(b=>b.onclick=()=>setScen(b.dataset.scen));
-$$('.opt[data-opt]').forEach(o=>o.onclick=()=>{if(!o.classList.contains('pick'))setScen(o.dataset.opt);});
-$$('a[data-go]').forEach(a=>a.onclick=e=>{e.preventDefault();setScen(a.dataset.go,'houses');});
 /* clicking any in-page link opens the fold it points into */
 document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const t=document.getElementById(a.getAttribute('href').slice(1));if(!t)return;let d=t.tagName==='DETAILS'?t:t.closest('details');while(d){d.open=true;d=d.parentElement&&d.parentElement.closest('details');}});
-function renderItin(){if(!ITIN[ITIN_KEY])ITIN_KEY='clt';const it=ITIN[ITIN_KEY];if(!it)return;$('#itinNote').innerHTML=it.note;
+function renderItin(){const it=ITIN.clt;if(!it)return;$('#itinNote').innerHTML=it.note;
  $('#days').innerHTML=it.days.map(d=>`<div class="day"><div class="dh"><div class="kicker">${esc(d.date)}</div><h3>${d.title}</h3>${d.sub?`<div style="font-size:13.5px;color:var(--mute);margin-top:6px">${d.sub}</div>`:''}</div><div>${d.rows.map(([k,v])=>`<div class="row"><b>${esc(k)}</b><div>${v}</div></div>`).join('')}</div></div>`).join('');}
 
 /* ───────────── dinner / things / sports / tips ───────────── */
@@ -604,70 +479,15 @@ $('#dishAdd').onclick=()=>{const v=$('#dishIn').value.trim();if(!v)return;if(!NA
 $('#dishIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('#dishAdd').click();});
 
 function renderLists(){checklist('pack','pack',PACK,false);checklist('todoList','todos',TODOS,true);}
-function boot(){renderHouses();applyScen();renderItin();renderExtras();renderLists();renderVote();renderDishes();load();setInterval(load,25000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});spy();}
+function boot(){renderItin();renderExtras();renderLists();renderVote();renderDishes();load();setInterval(load,25000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)load();});spy();}
 </script>
 <script>
 /* ═══════════ CONTENT (was content.js) ═══════════ */
 /* content.js — everything the site says. index.html only renders it.
    Last checked Oct 29, 2026. Prices and dates can change; links are the source of truth. */
 
-const AB = id => `https://www.airbnb.com/rooms/${id}?check_in=2026-11-24&check_out=2026-11-28&adults=8&children=2`;
-
-/* ───────── House shortlist (from the Airbnb search on Oct 29; all available Nov 24–28, sleep 10) ───────── */
-HOUSES.mtn = [
-  { kind:'mtn', code:'Mtn A', id:'747299435140104977', name:'Cane Creek Cabin', area:'Fletcher, NC', drive:'1 hr 50', br:5, ba:3, rating:'4.93 (14)', total:3460, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'3,400 square feet, five king beds, a game room with foosball and air hockey, hot tub, fire pit. Between Asheville and Hendersonville.' },
-  { kind:'mtn', code:'Mtn B', id:'1066609093454799038', name:'1906 house in Asheville', area:'Asheville, NC', drive:'2 hr', br:5, ba:2, rating:'4.98 (82)', total:2955, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'Old house in the middle of Asheville with a wrap-around porch and a seven-person hot tub. Walkable to downtown. Only two bathrooms.' },
-  { kind:'mtn', code:'Mtn C', id:'955775179253163287', name:'Modern house with lake access', area:'Brevard, NC', drive:'2 hr 20', br:5, ba:3.5, rating:'4.92 (26)', total:1578, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'Newer build near Brevard with access to three lakes. The cheapest well-reviewed option on either list.' },
-  { kind:'mtn', code:'Mtn D', id:'868747285996010808', name:'Two kitchens and a fire pit', area:'Landrum, SC', drive:'1 hr 25', br:5, ba:3, rating:'4.94 (17)', total:1992, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'Big newer house in the foothills just over the SC line, five minutes from the Tryon equestrian center, with a fire pit and two kitchens. Shortest drive of any house on the list.' },
-  { kind:'mtn', code:'Mtn E', id:'9509197', name:'Lakefront on Lake Lure', area:'Lake Lure, NC', drive:'1 hr 40', br:5, ba:2, rating:'4.74 (81)', total:2113, fc:true, canc:'Free cancellation until Nov 10', cancc:'green',
-    desc:'Right on Lake Lure with a dock and deck. Free cancellation. Only two bathrooms, and the reviews are a notch below the others.' },
-  { kind:'mtn', code:'Mtn F', id:'614321663989488925', name:'Triple Peak views', area:'Banner Elk, NC', drive:'2 hr 20', br:5, ba:3, rating:'4.87 (101)', total:3870, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'High Country house with long views, a hot tub and a wrap-around deck. Coldest option on the list; ten minutes from Tweetsie.' },
-].map(h=>({...h, url:AB(h.id)}));
-
-HOUSES.bch = [
-  { kind:'bch', code:'Beach A', id:'50284700', name:'Waterfront with private pool', area:'Isle of Palms, SC', drive:'3 hr 45', br:5, ba:4.5, rating:'4.87 (30)', total:5644, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'On the water with a private pool and a big kitchen, twenty minutes from downtown Charleston. The most expensive house on the ballot.' },
-  { kind:'bch', code:'Beach B', id:'47703423', name:'Ocean and lighthouse views', area:'Folly Beach, SC', drive:'3 hr 40', br:5, ba:3.5, rating:'4.98 (146)', total:4553, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'Across the street from the beach at the east end of Folly, with the ocean out front, the marsh out back and the Morris Island lighthouse in view. 146 reviews at 4.98.' },
-  { kind:'bch', code:'Beach C', id:'1176867815489267868', name:'Six bedrooms, five decks', area:'Carolina Beach, NC', drive:'3 hr 45', br:6, ba:4, rating:'4.92 (39)', total:2838, fc:true, canc:'Free cancellation until Nov 10', cancc:'green',
-    desc:'Ocean views from five decks, six bedrooms, free cancellation. Twenty-five minutes from Wilmington and Enchanted Airlie.' },
-  { kind:'bch', code:'Beach D', id:'725991274847455646', name:'Pool, elevator, one minute to the beach', area:'Ocean Isle Beach, NC', drive:'3 hr 30', br:5, ba:4.5, rating:'4.98 (50)', total:2430, fc:false, canc:'Non-refundable after 24 hours', cancc:'red',
-    desc:'Second row, about a one-minute walk to the sand, with a private saltwater pool, an elevator and wrap-around decks with ocean and marsh views. Best-rated house under $2,500.' },
-  { kind:'bch', code:'Beach E', id:'41291382', name:'Beachfront, unobstructed views', area:'Murrells Inlet, SC', drive:'3 hr 40', br:5, ba:3, rating:'4.98 (103)', total:2414, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'Oceanfront in Garden City, ten minutes from Brookgreen Gardens for Nights of a Thousand Candles on Friday.' },
-  { kind:'bch', code:'Beach F', id:'563799656307352638', name:'Six bedrooms, pool, 90 seconds to the beach', area:'Pawleys Island, SC', drive:'3 hr 45', br:6, ba:4, rating:'4.95 (86)', total:2770, fc:false, canc:'Partial refund until Nov 17', cancc:'amber',
-    desc:'A short walk to the beach with a private pool and a spare bedroom. Pawleys is the quietest of the beach towns.' },
-].map(h=>({...h, url:AB(h.id)}));
-
 /* ───────── Ballot ───────── */
-QUESTIONS.where = { multi:false, title:'1. Where do we spend the week?', help:'One answer. Every version starts and ends in Charlotte.',
-  opts:[
-    { id:'clt', label:'Charlotte all week', meta:'Cindy & Randy’s as home base. Nothing to book.' },
-    { id:'mtn', label:'Mountain house', meta:'Everyone under one roof, 1½–2½ hours west. Cold and cozy.' },
-    { id:'bch', label:'Beach house', meta:'Everyone under one roof, 3½–4 hours southeast. Mid-60s and sunny.' },
-    { id:'split', label:'Split: Thanksgiving in Charlotte, then Fri–Sat at a house', meta:'Dinner at the Shearers’ Thursday, two nights away after. Shortest booking, most driving.' },
-  ] };
-QUESTIONS.house = { multi:true, title:'2. If we rent a house, which ones would you be happy with?', help:'Check every house you would be fine booking. The most-ticked one that is still available gets booked. Details and links are in Where we stay.',
-  opts:[
-    { id:'747299435140104977', grp:'Mountains', label:'Mtn A · Cane Creek Cabin, Fletcher', meta:'$3,460 · 5 BR / 3 BA · hot tub, game room · 1 hr 50' },
-    { id:'1066609093454799038', grp:'Mountains', label:'Mtn B · 1906 house, Asheville', meta:'$2,955 · 5 BR / 2 BA · walkable, hot tub · 2 hr' },
-    { id:'955775179253163287', grp:'Mountains', label:'Mtn C · Modern house, Brevard', meta:'$1,578 · 5 BR / 3.5 BA · lake access · 2 hr 20' },
-    { id:'868747285996010808', grp:'Mountains', label:'Mtn D · Two kitchens and a fire pit, Landrum SC', meta:'$1,992 · 5 BR / 3 BA · 1 hr 25' },
-    { id:'9509197', grp:'Mountains', label:'Mtn E · Lakefront, Lake Lure', meta:'$2,113 · 5 BR / 2 BA · dock · free cancellation · 1 hr 40' },
-    { id:'614321663989488925', grp:'Mountains', label:'Mtn F · Triple Peak views, Banner Elk', meta:'$3,870 · 5 BR / 3 BA · hot tub · 2 hr 20' },
-    { id:'50284700', grp:'Beach', label:'Beach A · Waterfront with pool, Isle of Palms', meta:'$5,644 · 5 BR / 4.5 BA · 3 hr 45' },
-    { id:'47703423', grp:'Beach', label:'Beach B · Ocean and lighthouse views, Folly Beach', meta:'$4,553 · 5 BR / 3.5 BA · 3 hr 40' },
-    { id:'1176867815489267868', grp:'Beach', label:'Beach C · Six bedrooms, five decks, Carolina Beach', meta:'$2,838 · 6 BR / 4 BA · free cancellation · 3 hr 45' },
-    { id:'725991274847455646', grp:'Beach', label:'Beach D · Pool and elevator, one minute to the beach, Ocean Isle', meta:'$2,430 · 5 BR / 4.5 BA · non-refundable · 3 hr 30' },
-    { id:'41291382', grp:'Beach', label:'Beach E · Beachfront, Murrells Inlet', meta:'$2,414 · 5 BR / 3 BA · 3 hr 40' },
-    { id:'563799656307352638', grp:'Beach', label:'Beach F · Six bedrooms with pool, Pawleys Island', meta:'$2,770 · 6 BR / 4 BA · 3 hr 45' },
-  ] };
-QUESTIONS.dinner = { multi:false, title:'3. Thanksgiving lunch: how do we do it?', help:'One answer. Nobody is on the hook for the turkey yet.',
+QUESTIONS.dinner = { multi:false, title:'1. Thanksgiving lunch: how do we do it?', help:'One answer. Nobody is on the hook for the turkey yet.',
   opts:[
     { id:'cook', label:'Cook it ourselves', meta:'Someone takes the turkey, everyone else brings a dish. Sign-up is in The meal section.' },
     { id:'combo', label:'Combination: order the turkey and the heavy lifting, cook the rest', meta:'A cooked turkey (or a full heat-and-serve from Publix or Whole Foods) plus homemade sides and pies from whoever wants to cook. Least stress for the most food.' },
@@ -675,7 +495,7 @@ QUESTIONS.dinner = { multi:false, title:'3. Thanksgiving lunch: how do we do it?
     { id:'togo', label:'Order a restaurant’s Thanksgiving to-go feast', meta:'Sullivan’s does a feast for 10; Mac’s Speed Shop and Midwood Smokehouse do turkey packages.' },
     { id:'out', label:'Reserve a restaurant for 10', meta:'Maggiano’s SouthPark, Church and Union, Capital Grille or Sullivan’s. No dishes, but a long sit for a two-year-old.' },
   ] };
-QUESTIONS.outings = { multi:true, title:'4. Which of these would you join?', help:'Charlotte-week outings. None of them conflict with dinner.',
+QUESTIONS.outings = { multi:true, title:'2. Which of these would you join?', help:' None of them conflict with dinner.',
   opts:[
     { id:'parade', label:'Thanksgiving Eve Parade uptown', meta:'Wednesday 5:30 PM on Tryon Street. Or on WCCB from the couch.' },
     { id:'trot', label:'Turkey Trot at SouthPark', meta:'Thursday morning. One-mile at 8:00 and a free Tot Trot at 8:30 for the kids; 5K at 9:10.' },
@@ -684,7 +504,7 @@ QUESTIONS.outings = { multi:true, title:'4. Which of these would you join?', hel
     { id:'knights', label:'Light the Knights at the ballpark', meta:'Ice skating and snow tubing uptown, Friday or Saturday.' },
     { id:'brewery', label:'Afternoon at a biergarten', meta:'Olde Mecklenburg has room for the kids to run.' },
   ] };
-QUESTIONS.arrive = { multi:false, title:'5. Reids and Garcias: when are you driving down?', help:'Only the two Virginia households need to answer. Tuesday is a work day for everyone.',
+QUESTIONS.arrive = { multi:false, title:'3. Reids and Garcias: when are you driving down?', help:'Only the two Virginia households need to answer. Tuesday is a work day for everyone.',
   opts:[
     { id:'tuepm', label:'Tuesday after work', meta:'Leave around 7 PM, kids sleep in the car, arrive 1–2 AM.' },
     { id:'wed', label:'Wednesday morning', meta:'Out by 6 AM, in Charlotte by early afternoon, in time for the parade.' },
@@ -703,7 +523,7 @@ DISH_NEEDS.push('Turkey','Stuffing','Mashed potatoes','Gravy','Sweet potatoes','
 
 /* ───────── Itineraries ───────── */
 const KID = ' <span class="tag" style="font-size:10.5px">kids</span>';
-ITIN.clt = { note:'Assumes Option 1 wins: everyone sleeps at Nolen Lane except Ryan and Kristi, who are about 20 minutes away on East Woodlawn Road. Nothing here needs booking except the Turkey Trot and lights tickets.',
+ITIN.clt = { note:'Everyone sleeps at Nolen Lane except Ryan and Kristi, who are about 20 minutes away on East Woodlawn Road. Nothing here needs booking except the Turkey Trot and lights tickets.',
  days:[
   { date:'Tuesday · Nov 24', title:'Work day, then the drive', rows:[
     ['Day','Normal work day for everyone. Charlotte households are home; Virginia households pack the cars the night before.'],
@@ -734,64 +554,6 @@ ITIN.clt = { note:'Assumes Option 1 wins: everyone sleeps at Nolen Lane except R
     ['Also','UNC–NC State, Virginia Tech–Virginia and Clemson–South Carolina are all Saturday; kickoff times land around Nov 16 and will be added here. Holidays at the Garden at Daniel Stowe'+M('Daniel Stowe Botanical Garden')+' opens for the season at 5.'],
   ]},
  ]};
-ITIN.mtn = { note:'Assumes Option 2 wins with an Asheville-area house (Mtn A–E). For Banner Elk, swap Biltmore for Tweetsie Christmas and add 30 minutes to the drive. Check-in is usually 4 PM, checkout 10 or 11 AM.',
- days:[
-  { date:'Tuesday · Nov 24', title:'Work day, then the drive', rows:[
-    ['Day','Normal work day. Charlotte cars leave after work (1½–2½ hours) and handle check-in and the grocery pickup; the big order is placed for the Hendersonville or Asheville Ingles on the way.'],
-    ['Evening','Virginia cars go straight to the house after work: Vienna or Manassas to Asheville is about 7 hours via I-85 or US-29 to Greensboro and then I-40 west, so a 7 PM start arrives around 2 AM. Or leave Wednesday at 6 and be there by lunch.'],
-  ]},
-  { date:'Wednesday · Nov 25', title:'Biltmore and a town', rows:[
-    ['Morning','Christmas at Biltmore'+M('Biltmore Estate')+'. The house is decorated from Nov 3; daytime tickets are timed, so buy them now. Allow three hours with the kids; the Antler Hill farmyard is the part they will remember.'+KID],
-    ['Lunch','Hendersonville’s Main Street or Black Mountain, depending on the house. Both are flat and stroller-friendly with places to eat.'],
-    ['Afternoon','Pies and sides. The parade is on WCCB at 6 if anyone wants it; Packers at Rams on Netflix at 8.'],
-    ['Evening','Fire pit, s’mores, bourbon.'],
-  ]},
-  { date:'Thursday · Nov 26', title:'Thanksgiving', sub:'Sunset 5:20 in the mountains', rows:[
-    ['Early','A short walk before the kitchen takes over. Jump Off Rock'+M('Jump Off Rock Laurel Park')+' is a drive-up overlook near Hendersonville; the Carl Sandburg Home'+M('Carl Sandburg Home')+' in Flat Rock has flat paths and goats. Lake Lure’s Flowering Bridge'+M('Lake Lure Flowering Bridge')+' if we are there.'+KID],
-    ['Morning','Macy’s parade on, turkey in by 8:30. If we ordered a heat-and-serve meal, this is the reheating window.'],
-    ['1:00 PM','Thanksgiving lunch. Bears at Lions on in the background; check the house has the channels before Tuesday, since a lot of mountain houses are streaming-only and cell service is thin.'],
-    ['Afternoon','Naps, the 4:30 game, hot tub as the light goes.'],
-    ['Evening','Leftovers, pie, the night game.'],
-  ]},
-  { date:'Friday · Nov 27', title:'Chimney Rock or the gem mine', rows:[
-    ['Morning','Chimney Rock State Park'+M('Chimney Rock State Park')+' is open again and has an elevator to the top. Or Elijah Mountain Gem Mine'+M('Elijah Mountain Gem Mine')+' in Hendersonville, which has covered flumes and a goat farm; the kids will choose this one.'+KID],
-    ['Afternoon','Leftovers. Nap. A brewery with a yard for whoever wants one: Sierra Nevada in Mills River'+M('Sierra Nevada Brewing Mills River')+' has a big one and a kids’ menu.'],
-    ['Evening','Last night at the house. Pack what you can.'],
-  ]},
-  { date:'Saturday · Nov 28', title:'Checkout and home', rows:[
-    ['Morning','Out by 10. Charlotte cars home by lunch. Virginia cars take I-40 east to Greensboro and then I-85 or US-29 north; about 7 hours, so leave straight from the house.'],
-  ]},
- ]};
-ITIN.bch = { note:'Assumes Option 3 wins. Written for the Brunswick or Grand Strand beaches (Beach C–F); for Charleston (Beach A–B), swap in the Festival of Lights at James Island and the SC Aquarium. Check-in is usually 4 PM.',
- days:[
-  { date:'Tuesday · Nov 24', title:'Work day, then the drive', rows:[
-    ['Day','Normal work day. Charlotte cars leave after work (3½–4 hours), check in and pick up the grocery order at the nearest Publix or Food Lion.'],
-    ['Evening','Virginia cars can go straight to the beach after work: Vienna or Manassas to Ocean Isle is about 6½ hours via I-95 and US-74, roughly the same as driving to Charlotte. A 7 PM start arrives around 1:30 AM; or leave Wednesday at 6 and be on the beach by lunch.'],
-  ]},
-  { date:'Wednesday · Nov 25', title:'Beach day', rows:[
-    ['Morning','The beach. It is in the 60s and empty; bring sand toys and jackets.'+KID],
-    ['Midday','Lunch out. Southport'+M('Southport NC waterfront')+' is the nicest town on the Brunswick coast for a walk; Murrells Inlet’s Marshwalk'+M('Murrells Inlet Marshwalk')+' if we are on the Grand Strand.'],
-    ['Afternoon','Pies and sides. The parade is on WCCB at 6; Packers at Rams on Netflix at 8.'],
-    ['Evening','Dinner at the house.'],
-  ]},
-  { date:'Thursday · Nov 26', title:'Thanksgiving', sub:'Sunset 5:10 on the coast', rows:[
-    ['Morning','A turkey trot if there is one nearby (Wilmington and Myrtle Beach both have them), otherwise a long beach walk.'],
-    ['Morning','Macy’s parade on, turkey in by 8:30. If we ordered a heat-and-serve meal, this is the reheating window.'],
-    ['1:00 PM','Thanksgiving lunch, Bears at Lions on in the background.'],
-    ['Afternoon','Beach walk, naps, the 4:30 game.'],
-    ['Evening','Leftovers, pie and the night game on the deck. Bring blankets.'],
-  ]},
-  { date:'Friday · Nov 27', title:'Aquarium and lights', rows:[
-    ['Morning','NC Aquarium at Fort Fisher'+M('NC Aquarium at Fort Fisher')+' (ten minutes from Kure, 45 from Ocean Isle via the ferry) or Ripley’s Aquarium in Myrtle Beach'+M('Ripleys Aquarium Myrtle Beach')+'.'+KID],
-    ['Afternoon','Leftovers. Nap. Beach.'],
-    ['Evening','Lights: Nights of a Thousand Candles at Brookgreen Gardens'+M('Brookgreen Gardens')+' (Fri–Sun, 4–9 PM, tickets ahead) or Enchanted Airlie in Wilmington'+M('Airlie Gardens')+' (Nov 27–28, timed entry, sells out). Ocean Isle’s own tree lighting is Friday evening on the island.'+KID],
-  ]},
-  { date:'Saturday · Nov 28', title:'Checkout and home', rows:[
-    ['Morning','Out by 10. Charlotte cars home by mid-afternoon. Virginia cars take US-74 to I-95; the Reids plan an afternoon departure anyway, so lunch on the way and home around 9 PM.'],
-  ]},
- ]};
-
-/* ───────── Contacts ───────── */
 CONTACTS.push(
   { n:'Cindy & Randy Shearer', r:'Hosts · Charlotte', addr:'14358 Nolen Ln, Charlotte, NC', em:'nshearc@aol.com', em2:'rjsnnc@gmail.com' },
   { n:'Ryan & Kristi', r:'Charlotte', addr:'1328 East Woodlawn Rd, Charlotte, NC', em:'rjs3806@yahoo.com' },
@@ -803,20 +565,19 @@ CONTACTS.push(
 const _d=(m,d)=>new Date(2026,m-1,d);
 TODOS.push(
   { id:'trot', task:'Register for the Turkey Trot', due:_d(10,31), detail:'Prices go up Nov 1. One-mile and Tot Trot are free for 8 and under; 5K/8K $50. runsignup.com → Charlotte Turkey Trot.' },
-  { id:'vote', task:'Everyone votes', due:_d(11,4), detail:'Where, which house, dinner, outings, arrival day.' },
-  { id:'book', task:'Book the house, if a house wins', due:_d(11,5), detail:'James books from the shortlist the day after the vote closes. Most of these are non-refundable 30 days out, which is now.' },
+  { id:'vote', task:'Everyone votes', due:_d(11,4), detail:'Dinner, outings, arrival day.' },
   { id:'flights', task:'Cancel the Grenada flights', due:_d(11,6), detail:'AA confirmations NOJQXU (Cindy, Randy, Ryan, Kristi), OZKTXP (Danielle, Edgar), MSBEWC (Reids). Ask for a refund rather than a credit if the fare allows.' },
   { id:'refunds', task:'Confirm the Royalton refunds landed', due:_d(11,10), detail:'Cancellation numbers 63043116 and 63095420, both cancelled Oct 25. Cindy’s three rooms are on her account. The Viator snorkel trip was booked by Cindy.' },
   { id:'winston', task:'Confirm Winston’s boarding dates', due:_d(11,7), detail:'Pender Pet Retreat. Nov 23–29 as booked, or shift a day if we leave Tuesday.' },
   { id:'sitter', task:'Confirm the Garcias’ pet sitter', due:_d(11,7), detail:'Same dates, twice a day.' },
-  { id:'lights', task:'Buy lights tickets', due:_d(11,14), detail:'Speedway Christmas is per car. Brookgreen and Enchanted Airlie sell out for Thanksgiving weekend if the beach wins. Biltmore daytime tickets if the mountains win.' },
+  { id:'lights', task:'Buy lights tickets', due:_d(11,14), detail:'Speedway Christmas is per car. Carowinds WinterFest and Light the Knights are cheaper online ahead of time.' },
   { id:'dinner', task:'Dinner decided and ordered', due:_d(11,18), detail:'If cooking: dish list filled in. If ordering: grocery heat-and-serve orders need about a week; Hickory & Heart closes Nov 20, Sullivan’s and Mac’s take orders to Nov 25.' },
   { id:'rk', task:'Ryan and Kristi confirm their Thanksgiving-day timing', due:_d(11,14), detail:'They are likely doing Thanksgiving with Kristi’s family too; once we know when, the 1 PM lunch can shift.' },
   { id:'turkey', task:'Turkey claimed or ordered', due:_d(11,19), detail:'Whoever takes it: 20-plus pounds for 10, or two smaller birds. If nobody wants to roast one, Reid’s Fine Foods and Publix sell cooked turkeys with pickup Nov 24–25.' },
-  { id:'grocery', task:'Grocery order for Tuesday delivery', due:_d(11,23), detail:'To Nolen Lane, or pickup near the house if we rented one. Toddler staples on the list.' },
+  { id:'grocery', task:'Grocery order for Tuesday delivery', due:_d(11,23), detail:'To Nolen Lane. Toddler staples on the list.' },
   { id:'cars', task:'Oil, tires, car seats checked', due:_d(11,23), detail:'Both Virginia cars.' },
 );
-PACK.push('Car seats (both)','Pack-and-play and sheets (only if a house wins)','Stroller (only if a house wins)','Sound machines','Kids’ medicine, thermometer','Favorite stuffed animals','Warm layers; it is 40° at night','Rain jackets','Your Thanksgiving dish and a serving spoon','Cooler bag','Chargers, car charger','Football','Cards and a board game','Bourbon for Randy','Blankets for the lights outings');
+PACK.push('Car seats (both)','Sound machines','Kids’ medicine, thermometer','Favorite stuffed animals','Warm layers; it is 40° at night','Rain jackets','Your Thanksgiving dish and a serving spoon','Cooler bag','Chargers, car charger','Football','Cards and a board game','Bourbon for Randy','Blankets for the lights outings');
 
 /* ───────── Around Charlotte ───────── */
 THINGS.push(
@@ -857,10 +618,9 @@ LOCAL.push(
   { when:'Sat Nov 28', l:['ncaa','2579','228'], what:'South Carolina at Clemson', note:'The Palmetto Bowl in Clemson, 2½ hours from Charlotte. Time TBA.' },
 );
 TIPS.push(
-  { h:'Weather', p:'Late November in Charlotte averages 60° by day and 41° at night, with about a one-in-five chance of rain on any day. The mountains run ten degrees colder; the coast a few degrees warmer. Sunrise 7:10, sunset 5:12.' },
+  { h:'Weather', p:'Late November in Charlotte averages 60° by day and 41° at night, with about a one-in-five chance of rain on any day. Sunrise 7:10, sunset 5:12.' },
   { h:'Getting around', p:'Everyone has a car. For the parade, park in a deck off Tryon or ride the light rail to 7th Street. SouthPark Mall is closed Thanksgiving and busy Friday. Uber and Lyft are normal.' },
-  { h:'If a house wins', p:'This page gets rewritten for the house: check-in details, door code, grocery plan, nearest urgent care. Several mountain listings warn about weak cell service, so download maps before leaving Charlotte.' },
-  { h:'Money', p:'A rental is split four ways by household, same as Grenada. Thanksgiving groceries or the heat-and-serve order go on one card and get settled on Venmo.' },
+  { h:'Money', p:'Thanksgiving groceries or the heat-and-serve order go on one card and get settled on Venmo.' },
 );
 
 /* ═══════════ END CONTENT ═══════════ */
